@@ -55,14 +55,14 @@ public class PlayerControl : MonoBehaviour
 
     // Behaviour on landing
     public void landing() {
-        Debug.Log("Suelo");
+        //Debug.Log("Suelo");
         animation.SetBool("Jump", false);
         animation.SetBool("Falling", false);
     }
 
     // Behaviour on ceiling collision
     public void ceilingCollision() {
-        Debug.Log("Techo");
+        //Debug.Log("Techo");
         // Change animation to falling
         animation.SetBool("Falling", true);
     }
@@ -75,16 +75,16 @@ public class PlayerControl : MonoBehaviour
 
         //Debug.Log("Sp = " + rb.velocity.y);
 
-        if (rb.velocity.y < -0.5f) {
+        // Behaviour for Animator
+        if (rb.velocity.y < -0.5f)
             animation.SetBool("Falling", true);
-            //animation.SetBool("Jump", true);
-        } else {
-            if (rb.velocity.y > 1f) {
+        else {
+            if (rb.velocity.y > 1f)
                 animation.SetBool("Jump", true);
-            }
-            if (rb.velocity.y == 0f) {
+
+            if (rb.velocity.y == 0f) 
                 animation.SetBool("Jump",false);
-            }
+
             animation.SetBool("Falling", false);
         }
             

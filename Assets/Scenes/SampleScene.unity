@@ -2097,7 +2097,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 311
   m_GroundCheck: {fileID: 2047002223}
   m_CeilingCheck: {fileID: 1203359572}
   m_CrouchDisableCollider: {fileID: 0}
@@ -2451,9 +2451,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.049385905, y: -0.10512203}
+  m_Offset: {x: 0.049385905, y: -0.107595414}
   serializedVersion: 2
-  m_Radius: 0.13035166
+  m_Radius: 0.12787828
 --- !u!50 &1138918754
 Rigidbody2D:
   serializedVersion: 4
@@ -2493,7 +2493,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 567
   m_GroundCheck: {fileID: 1414112062}
   m_CeilingCheck: {fileID: 538588314}
   m_CrouchDisableCollider: {fileID: 0}
@@ -2543,7 +2543,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0477916, y: 0.072283804}
+  m_Offset: {x: 0.055027783, y: 0.05925864}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2554,7 +2554,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.20086122, y: 0.2774421}
+  m_Size: {x: 0.18638885, y: 0.25139177}
   m_EdgeRadius: 0
 --- !u!114 &1138918757
 MonoBehaviour:
