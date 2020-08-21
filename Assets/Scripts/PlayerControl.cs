@@ -22,6 +22,7 @@ public class PlayerControl : MonoBehaviour
     // Keeps track of the player we are
     private int player;
 
+    // Movement variables
     private float xMovement = 0f;
     private bool jump = false;
     public float speed = 30f;
@@ -30,10 +31,14 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Get Controller2D component
         controller = GetComponent<CharacterController2D>();
+        // Get Animator component
         animation = GetComponent<Animator>();
+        // Get RigidBody2D Component
         rb = GetComponent<Rigidbody2D>();
-        
+
+        // Check whether we are player 1 or 2
         player = gameObject.tag == "Player1" ? 1 : 2;
     }
 
@@ -49,8 +54,7 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetButtonDown("Jump" + player)) {
             jump = true;
             animation.SetBool("Jump", true);
-        }
-            
+        }            
     }
 
     // Behaviour on landing
@@ -69,7 +73,7 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate() 
     {
-        //Movement
+        // Movement
         controller.Move(xMovement * Time.fixedDeltaTime, false, jump);
         jump = false;
 
@@ -86,10 +90,6 @@ public class PlayerControl : MonoBehaviour
                 animation.SetBool("Jump",false);
 
             animation.SetBool("Falling", false);
-        }
-            
-
-            
-
+        }            
     }
 }
