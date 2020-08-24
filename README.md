@@ -1,3 +1,2 @@
-# Harvard-Own-Videogame
+# Harvard Videogame
 Unity Videogame for CS50 Harvard VideoGame Course
-Final Assignment
