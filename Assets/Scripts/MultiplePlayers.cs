@@ -17,7 +17,6 @@ public class MultiplePlayers : MonoBehaviour
     // Updated after Update
     void LateUpdate()
     {
-
         Vector3 centerPoint = CenterPoint();
 
         transform.position = centerPoint + offset;

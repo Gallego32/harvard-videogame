@@ -3953,8 +3953,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db90b641098e74b4eb545e5a13a39455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  twoPlayers: 1
-  onePlayerCamera: {fileID: 335432327}
+  twoPlayers: 0
+  player1: {fileID: 1699605202}
+  player2: {fileID: 1521912441}
+  camera: {fileID: 335432327}
 --- !u!1 &335432327
 GameObject:
   m_ObjectHideFlags: 0
@@ -4237,6 +4239,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1521912441 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1351815291987698314, guid: 24ad93287051a924bafb279bbc4f5ee0, type: 3}
+  m_PrefabInstance: {fileID: 1898349843}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1633683619 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1351815291987698359, guid: 24ad93287051a924bafb279bbc4f5ee0, type: 3}
@@ -5427,6 +5434,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1699605202 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7002221570663986200, guid: 2e330341e1ec5b347a7df0c7a68e82d4, type: 3}
+  m_PrefabInstance: {fileID: 1404636396002158248}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1898349843
 PrefabInstance:
   m_ObjectHideFlags: 0
