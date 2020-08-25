@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\MultiplePlayers.cs" />
+    <Compile Include="Assets\Scripts\ClampPosition.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

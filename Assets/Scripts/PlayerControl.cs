@@ -34,6 +34,8 @@ public class PlayerControl : MonoBehaviour
     public PhysicsMaterial2D friction;
     public PhysicsMaterial2D noFriction;
 
+    // Reference to the Camera
+    public GameObject camera;
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +62,8 @@ public class PlayerControl : MonoBehaviour
         animation.SetFloat("Speed", Mathf.Abs(xMovement));
 
         // Jump depending on player
-        if (Input.GetButtonDown("Jump" + player)) {
+        // Second condition allows us to clamp y position
+        if (Input.GetButtonDown("Jump" + player) && transform.position.y < camera.transform.position.y + 1.5f) {
             jump = true;
             animation.SetBool("Jump", true);
         }            
