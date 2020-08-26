@@ -9,6 +9,8 @@
 [Tt]emp/
 [Uu]nityGenerated/
 [Ll]ibrary/*
+Library/
+/Library/
 /[Aa]ssets/AssetStoreTools*
 /[Bb]uild/
 /[Ll]ibrary/
@@ -21,6 +23,7 @@
 sysinfo.txt
 # Unity3D generated meta files
 *.pidb.meta
+Text.txt
 
 ###
 # VS/MD solution and project files
