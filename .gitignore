@@ -1,9 +1,18 @@
 ###
 # Unity folders and files
 ###
+[Aa]ssets/AssetStoreTools*
+[Bb]uild/
+[Ll]ibrary/
+[Ll]ocal[Cc]ache/
+[Oo]bj/
+[Tt]emp/
+[Uu]nityGenerated/
+[Ll]ibrary/*
 /[Aa]ssets/AssetStoreTools*
 /[Bb]uild/
 /[Ll]ibrary/
+/[Ll]ibrary/*
 /[Ll]ocal[Cc]ache/
 /[Oo]bj/
 /[Tt]emp/
@@ -16,6 +25,7 @@ sysinfo.txt
 ###
 # VS/MD solution and project files
 ###
+[Ee]xportedObj/
 /[Ee]xportedObj/
 *.booproj
 *.csproj
