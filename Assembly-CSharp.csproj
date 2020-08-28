@@ -56,11 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\SelectingCamera.cs" />
+    <Compile Include="Assets\Scripts\Attack.cs" />
     <Compile Include="Assets\Scripts\ClampPosition.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\MultiplePlayers.cs" />
-    <Compile Include="Assets\Scripts\Attack.cs" />
+    <Compile Include="Assets\Scripts\BaseStats.cs" />
+    <Compile Include="Assets\Scripts\Stats.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

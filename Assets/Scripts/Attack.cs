@@ -29,8 +29,11 @@ public class Attack : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Attack" + player))
-        {
-            animation.SetTrigger("Attack1");
-        }
+            Attack1();
+    }
+
+    void Attack1()
+    {
+        animation.SetTrigger("Attack1");
     }
 }
