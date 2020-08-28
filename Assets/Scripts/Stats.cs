@@ -14,21 +14,25 @@ public class Stats : MonoBehaviour
     void Start()
     {
         stats = new BaseStats(baseMaxHealth, baseAttack, baseDefense, baseSpeed, gameObject.tag, gameObject.layer);
-        Debug.Log(stats.Health);
-        Debug.Log(stats.Tag);
-        Debug.Log(stats.Layer);
-        stats.ModifyStat("health", -123);
-        Debug.Log(stats.Health);
+        Debug.Log(stats.Tag + " " + stats.Health);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (stats.Health <= 0f)
+            Die();
+        //stats.ModifyStat("health", -0.1f);
     }
 
-    //void Die()
-    //{
-    //   if (stats.Health)
-    //}
+    void Die()
+    {
+        Debug.Log("Die " + stats.Tag);
+        if (Equals(stats.Tag, "Player1"))
+            GameObject.Find("Player1").SetActive(false);
+        else if (Equals(stats.Tag, "Player2"))
+            GameObject.Find("Player2").SetActive(false);
+        else
+            Destroy(gameObject);        
+    }
 }
