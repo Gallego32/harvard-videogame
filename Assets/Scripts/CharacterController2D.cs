@@ -160,9 +160,11 @@ public class CharacterController2D : MonoBehaviour
 		transform.localScale = theScale;
 	}
 
+	/*
 	void OnDrawGizmosSelected()
 	{
 		Gizmos.DrawWireSphere(m_GroundCheck.position, k_GroundedRadius);
 		Gizmos.DrawWireSphere(m_CeilingCheck.position, k_CeilingRadius);
 	}
+	*/
 }

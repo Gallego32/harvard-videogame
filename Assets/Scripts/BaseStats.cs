@@ -3,17 +3,20 @@
 public class BaseStats
 {
     // Declare BaseStats
-    private float health, maxHealth, attack, defense, speed;
+    private float health, maxHealth, attack, defense, speed, range, attackSpeed;
     private string tag;
     private int layer;
 
-    public BaseStats(float maxHealth, float attack, float defense, float speed, string tag, int layer)
+    // BaseStats constructors
+    public BaseStats(float maxHealth, float attack, float defense, float speed, float range, float attackSpeed,string tag, int layer)
     {
-        this.health = maxHealth > 0 ? maxHealth : 100;
-        this.maxHealth = maxHealth > 0 ? maxHealth : 100;
-        this.attack = attack > 0 ? attack : 10;
-        this.defense = defense > 0 ? defense : 10;
-        this.speed = speed > 0 ? speed : 12;
+        this.health = maxHealth > 0 ? maxHealth : 100f;
+        this.maxHealth = maxHealth > 0 ? maxHealth : 100f;
+        this.attack = attack > 0 ? attack : 10f;
+        this.defense = defense > 0 ? defense : 10f;
+        this.speed = speed > 0 ? speed : 12f;
+        this.range = range > 0 ? range : 0.4f;
+        this.attackSpeed = attackSpeed > 0 ? attackSpeed : 2f;
         this.tag = tag;
         this.layer = layer;
     }
@@ -58,6 +61,18 @@ public class BaseStats
         get { return this.speed; }
         set { this.speed = value; }
     }
+    
+    public float Range
+    {
+        get { return this.range; }
+        set { this.range = value; }
+    }
+
+    public float AttackSpeed
+    {
+        get { return this.attackSpeed; }
+        set { this.attackSpeed = value; }
+    }
 
     public string Tag
     {
@@ -80,16 +95,22 @@ public class BaseStats
                 this.health = Math.Max(0, this.health + value);
                 break;
             case "maxHealth":
-                this.health = Math.Max(0, this.maxHealth + value);
+                this.maxHealth = Math.Max(0, this.maxHealth + value);
                 break;
             case "attack":
-                this.health = Math.Max(0, this.attack + value);
+                this.attack = Math.Max(0, this.attack + value);
                 break;
             case "defense":
-                this.health = Math.Max(0, this.defense + value);
+                this.defense = Math.Max(0, this.defense + value);
                 break;
             case "speed":
-                this.health = Math.Max(0, this.speed + value);
+                this.speed = Math.Max(0, this.speed + value);
+                break;
+            case "range":
+                this.range = Math.Max(0, this.range + value);
+                break;
+            case "attackSpeed":
+                this.attackSpeed = Math.Max(0, this.attackSpeed + value);
                 break;
         }
     }

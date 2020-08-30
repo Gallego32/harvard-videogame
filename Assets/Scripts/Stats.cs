@@ -5,7 +5,7 @@ using UnityEngine;
 public class Stats : MonoBehaviour
 {
     // Reference to our BaseStats class
-    private BaseStats stats;
+    public BaseStats stats;
 
     // Manage animations
     private Animator animation;
@@ -14,15 +14,15 @@ public class Stats : MonoBehaviour
     private int level;
 
     // Base public stats
-    public float baseMaxHealth, baseAttack, baseDefense, baseSpeed;
+    public float baseMaxHealth, baseAttack, baseDefense, baseSpeed, baseRange, baseAttackSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
         animation = GetComponent<Animator>();
         // Create a BaseStats object
-        stats = new BaseStats(baseMaxHealth, baseAttack, baseDefense, baseSpeed, gameObject.tag, gameObject.layer);
-        Debug.Log(stats.Tag + " " + stats.Health);
+        stats = new BaseStats(baseMaxHealth, baseAttack, baseDefense, baseSpeed, baseRange, baseAttackSpeed,gameObject.tag, gameObject.layer);
+        Debug.Log(stats.Tag + " Health: " + stats.Health);
     }
 
     // Update is called once per frame
@@ -34,13 +34,14 @@ public class Stats : MonoBehaviour
         //stats.ModifyStat("health", -0.1f);
     }
 
-    void Hit(float damage)
+    public void Hit(float damage)
     {
         // Perform Hit animation
         animation.SetTrigger("Hit");
 
         // Modify health
-        stats.ModifyStat("health", damage - stats.Defense);
+        stats.ModifyStat("health", - damage + stats.Defense);
+        Debug.Log(stats.Tag + " Health: " + stats.Health);
 
         // Check if we died
         if (stats.Health <= 0f)
