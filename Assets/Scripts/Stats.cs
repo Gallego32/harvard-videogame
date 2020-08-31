@@ -30,6 +30,9 @@ public class Stats : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
             StartCoroutine(Die()); 
+        
+        //BUG AUMENTA VIDA
+        //Hit(1);
             
         //stats.ModifyStat("health", -0.1f);
     }
@@ -39,8 +42,11 @@ public class Stats : MonoBehaviour
         // Perform Hit animation
         animation.SetTrigger("Hit");
 
+        // Defense logic
+        float dmg = damage - (stats.Defense * damage / 100);
+
         // Modify health
-        stats.ModifyStat("health", - damage + stats.Defense);
+        stats.ModifyStat("health", - dmg);
         Debug.Log(stats.Tag + " Health: " + stats.Health);
 
         // Check if we died

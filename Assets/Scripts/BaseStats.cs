@@ -23,11 +23,13 @@ public class BaseStats
 
     public BaseStats()
     {
-        this.health = 100;
-        this.maxHealth = 100;
-        this.attack = 10;
-        this.defense = 10;
-        this.speed = 12;
+        this.health = 100f;
+        this.maxHealth = 100f;
+        this.attack = 10f;
+        this.defense = 10f;
+        this.speed = 12f;
+        this.range = 0.4f;
+        this.attackSpeed = 2f;
     }
 
     // *** Get and set functions ***

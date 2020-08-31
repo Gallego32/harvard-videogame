@@ -19,6 +19,8 @@ public class AttackControl : MonoBehaviour
     // Get player stats
     private Stats stats;
 
+    private float nextAttackTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,8 +37,12 @@ public class AttackControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Attack" + player))
+        if (Input.GetButtonDown("Attack" + player) && Time.time >= nextAttackTime) 
+        {
             Attack();
+            nextAttackTime = Time.time + (1f / stats.stats.AttackSpeed);
+        }
+            
     }
 
     void Attack()
