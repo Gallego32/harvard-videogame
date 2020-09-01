@@ -59,7 +59,8 @@ public class Stats : MonoBehaviour
         animation.SetBool("Dead", true);
 
         Debug.Log("Entered Waiter");
-        yield return new WaitForSeconds(0.5f);
+        // Wait some time before removing entity
+        yield return new WaitForSeconds(1f);
 
         Debug.Log("Die " + stats.Tag);
         if (Equals(stats.Tag, "Player1"))
