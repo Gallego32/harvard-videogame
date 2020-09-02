@@ -56,7 +56,17 @@ public class Stats : MonoBehaviour
 
     IEnumerator Die()
     {
+        // Perform Death animation
         animation.SetBool("Dead", true);
+
+        // Set the player control not enabled after dying
+        if (Equals(stats.Tag, "Player1") || Equals(stats.Tag, "Player2"))
+        {
+            GetComponent<PlayerControl>().enabled = false;
+            GetComponent<CharacterController2D>().enabled = false;
+            GetComponent<AttackControl>().enabled = false;
+            GetComponent<ClampPosition>().enabled = false;
+        }
 
         Debug.Log("Entered Waiter");
         // Wait some time before removing entity

@@ -59,7 +59,12 @@ public class PlayerControl : MonoBehaviour
         // Horizontal movement depending on the player
         xMovement = Input.GetAxisRaw("Horizontal" + player) * speed;
 
+        // Movement animation logic
         animation.SetFloat("Speed", Mathf.Abs(xMovement));
+
+        if (animation.GetBool("Dead"))
+            Debug.Log("Mov a 0");
+            //xMovement = 0;
 
         // Jump depending on player
         // Second condition allows us to clamp y position
@@ -97,9 +102,6 @@ public class PlayerControl : MonoBehaviour
             rb.sharedMaterial = noFriction;
             cc.sharedMaterial = noFriction;
         }
-            
-        
-
         //Debug.Log("Sp = " + rb.velocity.y);
 
         // Behaviour for Animator
