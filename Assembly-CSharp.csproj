@@ -59,10 +59,12 @@
     <Compile Include="Assets\Scripts\AttackControl.cs" />
     <Compile Include="Assets\Scripts\ClampPosition.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
-    <Compile Include="Assets\Scripts\BaseStats.cs" />
+    <Compile Include="Assets\Scripts\BaseStats0.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\MultiplePlayers.cs" />
+    <Compile Include="Assets\Scripts\Stats0.cs" />
     <Compile Include="Assets\Scripts\Stats.cs" />
+    <Compile Include="Assets\Scripts\PlayerStats.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 6099718782011553237}
   - component: {fileID: 3858017532013144841}
   - component: {fileID: 2806916696392355232}
-  - component: {fileID: 2806916696392355239}
+  - component: {fileID: 8237829425182937787}
   m_Layer: 8
   m_Name: Player1
   m_TagString: Player1
@@ -337,7 +337,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 768
   attackCenter: {fileID: 2806916696358864865}
---- !u!114 &2806916696392355239
+--- !u!114 &8237829425182937787
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6099718782011553227}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 923b6cdd5aa1ef440b75a0fc004e0c92, type: 3}
+  m_Script: {fileID: 11500000, guid: ff21d2b8628ad0d4a90c4840e6b15144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseMaxHealth: 130

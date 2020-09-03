@@ -17,7 +17,7 @@ public class AttackControl : MonoBehaviour
     public Transform attackCenter;
 
     // Get player stats
-    private Stats stats;
+    private PlayerStats stats;
 
     private float nextAttackTime;
 
@@ -28,7 +28,7 @@ public class AttackControl : MonoBehaviour
         animation = GetComponent<Animator>();
 
         // Get Stats script
-        stats = GetComponent<Stats>();
+        stats = GetComponent<PlayerStats>();
 
         // Check whether we are player 1 or 2
         player = gameObject.tag == "Player1" ? 1 : 2;
@@ -40,7 +40,7 @@ public class AttackControl : MonoBehaviour
         if (Input.GetButtonDown("Attack" + player) && Time.time >= nextAttackTime) 
         {
             Attack();
-            nextAttackTime = Time.time + (1f / stats.stats.AttackSpeed);
+            nextAttackTime = Time.time + (1f / stats.AttackSpeed);
         }
             
     }
@@ -51,7 +51,7 @@ public class AttackControl : MonoBehaviour
         animation.SetTrigger("Attack");
 
         // We get an array of collided objects depending of the selected "canAttack" layer
-        Collider2D[] hit = Physics2D.OverlapCircleAll(attackCenter.position, stats.stats.Range, canAttack);
+        Collider2D[] hit = Physics2D.OverlapCircleAll(attackCenter.position, stats.Range, canAttack);
         
         // This array will get both circle and box collider 2D so we need some logic
         // to remove duplicated object
@@ -62,7 +62,7 @@ public class AttackControl : MonoBehaviour
         foreach(GameObject enemy in hitList)
         {
             if (enemy != gameObject)
-                enemy.GetComponent<Stats>().Hit(stats.stats.Attack);
+                enemy.GetComponent<PlayerStats>().Hit(stats.Attack);
         }
     }
     

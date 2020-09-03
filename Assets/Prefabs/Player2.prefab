@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1863259120173032657}
   - component: {fileID: 1863259120173032662}
   - component: {fileID: 1863259120173032663}
-  - component: {fileID: 1863259120173032660}
+  - component: {fileID: 1807527524}
   m_Layer: 8
   m_Name: Player2
   m_TagString: Player2
@@ -277,7 +277,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 768
   attackCenter: {fileID: 1863259120896929774}
---- !u!114 &1863259120173032660
+--- !u!114 &1807527524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1863259120173032661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 923b6cdd5aa1ef440b75a0fc004e0c92, type: 3}
+  m_Script: {fileID: 11500000, guid: ff21d2b8628ad0d4a90c4840e6b15144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseMaxHealth: 100
