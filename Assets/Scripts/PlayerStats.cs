@@ -37,13 +37,11 @@ public class PlayerStats : Stats
         animation.SetBool("Dead", true);
 
         // Set the player control not enabled after dying
-        if (Equals(gameObject.tag, "Player1") || Equals(gameObject.tag, "Player2"))
-        {
-            GetComponent<PlayerControl>().enabled = false;
-            GetComponent<CharacterController2D>().enabled = false;
-            GetComponent<AttackControl>().enabled = false;
-            GetComponent<ClampPosition>().enabled = false;
-        }
+
+        GetComponent<PlayerControl>().enabled = false;
+        GetComponent<CharacterController2D>().enabled = false;
+        GetComponent<AttackControl>().enabled = false;
+        GetComponent<ClampPosition>().enabled = false;
 
         Debug.Log("Entered Waiter");
         // Wait some time before removing entity

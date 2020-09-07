@@ -61,8 +61,15 @@ public class AttackControl : MonoBehaviour
         // Call hit's enemy function
         foreach(GameObject enemy in hitList)
         {
-            if (enemy != gameObject)
-                enemy.GetComponent<PlayerStats>().Hit(stats.Attack);
+            if (enemy != gameObject) 
+            {
+                if (enemy.layer == 9)
+                    enemy.GetComponent<EnemyStats>().Hit(stats.Attack);
+                else 
+                    enemy.GetComponent<PlayerStats>().Hit(stats.Attack);
+            }
+                //enemy.GetComponent<EnemyStats>().Hit(stats.Attack);
+                //enemy.GetComponent<Stats>().ModifyStat("health", stats.Attack);
         }
     }
     

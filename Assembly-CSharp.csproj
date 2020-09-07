@@ -55,18 +55,22 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Stats.cs" />
     <Compile Include="Assets\Scripts\SelectingCamera.cs" />
     <Compile Include="Assets\Scripts\AttackControl.cs" />
+    <Compile Include="Assets\Packs\Bandits - Pixel Art\Demo\Sensor_Bandit.cs" />
     <Compile Include="Assets\Scripts\ClampPosition.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
+    <Compile Include="Assets\Scripts\PlayerStats.cs" />
+    <Compile Include="Assets\Packs\Bandits - Pixel Art\Demo\Bandit.cs" />
     <Compile Include="Assets\Scripts\BaseStats0.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\MultiplePlayers.cs" />
     <Compile Include="Assets\Scripts\Stats0.cs" />
-    <Compile Include="Assets\Scripts\Stats.cs" />
-    <Compile Include="Assets\Scripts\PlayerStats.cs" />
+    <Compile Include="Assets\Scripts\EnemyStats.cs" />
   </ItemGroup>
   <ItemGroup>
+     <None Include="Assets\Packs\Hero and Opponents\license.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
