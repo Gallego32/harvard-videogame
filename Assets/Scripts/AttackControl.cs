@@ -68,8 +68,6 @@ public class AttackControl : MonoBehaviour
                 else 
                     enemy.GetComponent<PlayerStats>().Hit(stats.Attack);
             }
-                //enemy.GetComponent<EnemyStats>().Hit(stats.Attack);
-                //enemy.GetComponent<Stats>().ModifyStat("health", stats.Attack);
         }
     }
     

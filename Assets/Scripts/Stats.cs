@@ -34,8 +34,6 @@ public class Stats : MonoBehaviour
 
         // Get Animator component
         animation = GetComponent<Animator>();
-    
-        Debug.Log(AttackSpeed);
     }
 
     // ModifyStat function to contorl its value

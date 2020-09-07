@@ -225,7 +225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88aca76c6fb9a5d4c8296f1232d0f8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10.64
   friction: {fileID: 6200000, guid: b0b75c8ca3f86534581b3372fb9c8119, type: 2}
   noFriction: {fileID: 6200000, guid: 9c45cbfea0f1e88448a42c3652cb336e, type: 2}
   camera: {fileID: 0}
@@ -292,7 +291,7 @@ MonoBehaviour:
   baseMaxHealth: 100
   baseAttack: 25
   baseDefense: 20
-  baseSpeed: 0
+  baseSpeed: 10.64
   baseRange: 0.4
   baseAttackSpeed: 1.5
 --- !u!1 &1863259120892737259

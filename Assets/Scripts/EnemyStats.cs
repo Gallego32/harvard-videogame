@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyStats : Stats
 {
+    public float detectDistance;
+
     public void Hit(float damage)
     {
         // Perform Hit animation

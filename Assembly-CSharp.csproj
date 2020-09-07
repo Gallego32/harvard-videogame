@@ -65,9 +65,10 @@
     <Compile Include="Assets\Packs\Bandits - Pixel Art\Demo\Bandit.cs" />
     <Compile Include="Assets\Scripts\BaseStats0.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
+    <Compile Include="Assets\Scripts\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\MultiplePlayers.cs" />
     <Compile Include="Assets\Scripts\Stats0.cs" />
-    <Compile Include="Assets\Scripts\EnemyStats.cs" />
+    <Compile Include="Assets\Scripts\EnemyAI.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Packs\Hero and Opponents\license.txt" />

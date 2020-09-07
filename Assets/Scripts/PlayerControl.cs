@@ -28,7 +28,7 @@ public class PlayerControl : MonoBehaviour
     // Movement variables
     private float xMovement = 0f;
     private bool jump = false;
-    public float speed = 30f;
+    private float speed;
 
     // Moving on slopes
     public PhysicsMaterial2D friction;
@@ -51,6 +51,9 @@ public class PlayerControl : MonoBehaviour
 
         // Check whether we are player 1 or 2
         player = gameObject.tag == "Player1" ? 1 : 2;
+
+        // Get Stats Speed
+        speed = GetComponent<PlayerStats>().Speed;
     }
 
     // Update is called once per frame
@@ -94,6 +97,7 @@ public class PlayerControl : MonoBehaviour
         controller.Move(xMovement * Time.fixedDeltaTime, false, jump);
         jump = false;
 
+        // Avoid falling in slopes when the player isn't moving
         if (xMovement == 0) {
             rb.sharedMaterial = friction;
             cc.sharedMaterial = friction;
