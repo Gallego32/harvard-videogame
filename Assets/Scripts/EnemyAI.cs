@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour
 
     // Only attack the layers we want
     public LayerMask canAttack;
+    public LayerMask shouldJump;
 
     // Movement variables
     private float xMovement = 0f;
@@ -67,6 +68,8 @@ public class EnemyAI : MonoBehaviour
         speed = stats.Speed;
         detectDistance = stats.detectDistance;
 
+        Debug.Log(speed);
+
         // StartCoroutine of AI RandomMovement
         // This will only perform when the enemy hasn't found the Player
         StartCoroutine(RandomMovement());
@@ -74,6 +77,9 @@ public class EnemyAI : MonoBehaviour
         // StartCoroutine FollowPlayer which will allow the enemy to know if there are any
         // players nearby and which one is the closest one
         StartCoroutine(FollowPlayer());
+
+        // The enemy will jump if it collides with something in the way
+        StartCoroutine(ShouldJump());
     }
 
     // Update is called once per frame
@@ -165,6 +171,24 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    // The enemy will jump if it collides with something in the way
+    IEnumerator ShouldJump()
+    {
+        while (true)
+        {
+            if (foundPlayer && Mathf.Abs(xMovement) > 0)
+            {
+                Collider2D[] hit = Physics2D.OverlapCircleAll(attackCenter.position, stats.Range / 2, shouldJump);
+
+                Debug.Log(hit.Length);
+                if (hit.Length > 0)
+                    jump = true;
+            }
+            
+            yield return new WaitForSeconds(0.3f);
+        }
+    }
+
     // Attack will be performed in an animation Event
     void Attack()
     {
@@ -224,5 +248,15 @@ public class EnemyAI : MonoBehaviour
         }
         return hitList;
     }
+
+    /*      DEBUG FUNCTION */
+    void OnDrawGizmosSelected()
+	{
+        if (attackCenter == null)
+            return;
+
+		Gizmos.DrawWireSphere(attackCenter.position, 0.2f);
+	}
+    
 
 }

@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 108781529}
   - component: {fileID: 108781528}
   - component: {fileID: 108781527}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tilemap_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9773,10 +9773,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 1863259120173032661, guid: 24ad93287051a924bafb279bbc4f5ee0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1863259120173032662, guid: 24ad93287051a924bafb279bbc4f5ee0, type: 3}
       propertyPath: camera
       value: 
       objectReference: {fileID: 181233649}
+    - target: {fileID: 1863259120173032684, guid: 24ad93287051a924bafb279bbc4f5ee0, type: 3}
+      propertyPath: m_WhatIsGround.m_Bits
+      value: 1335
+      objectReference: {fileID: 0}
     - target: {fileID: 1863259120173032686, guid: 24ad93287051a924bafb279bbc4f5ee0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.066
@@ -9830,17 +9838,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2338844544018988547, guid: af970090bd501e845a4d8d417a097141, type: 3}
-      propertyPath: baseAttackSpeed
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2338844544018988548, guid: af970090bd501e845a4d8d417a097141, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.12175813
-      objectReference: {fileID: 0}
-    - target: {fileID: 2338844544018988548, guid: af970090bd501e845a4d8d417a097141, type: 3}
-      propertyPath: m_Radius
-      value: 0.0966821
+    - target: {fileID: 2338844544018988553, guid: af970090bd501e845a4d8d417a097141, type: 3}
+      propertyPath: m_WhatIsGround.m_Bits
+      value: 1335
       objectReference: {fileID: 0}
     - target: {fileID: 2338844544018988554, guid: af970090bd501e845a4d8d417a097141, type: 3}
       propertyPath: playersPosition.Array.data[0]
@@ -9850,6 +9850,10 @@ PrefabInstance:
       propertyPath: playersPosition.Array.data[1]
       value: 
       objectReference: {fileID: 1807527523}
+    - target: {fileID: 2338844544018988554, guid: af970090bd501e845a4d8d417a097141, type: 3}
+      propertyPath: shouldJump.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 2338844544018988555, guid: af970090bd501e845a4d8d417a097141, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.021
@@ -9962,6 +9966,10 @@ PrefabInstance:
     - target: {fileID: 6099718782011553235, guid: 560a971958a4c8f468f7f33ca85bf6ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6099718782011553238, guid: 560a971958a4c8f468f7f33ca85bf6ac, type: 3}
+      propertyPath: m_WhatIsGround.m_Bits
+      value: 1335
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 560a971958a4c8f468f7f33ca85bf6ac, type: 3}
