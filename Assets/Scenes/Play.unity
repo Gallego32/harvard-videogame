@@ -9830,6 +9830,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2338844544018988547, guid: af970090bd501e845a4d8d417a097141, type: 3}
+      propertyPath: baseAttackSpeed
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2338844544018988548, guid: af970090bd501e845a4d8d417a097141, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.12175813
+      objectReference: {fileID: 0}
+    - target: {fileID: 2338844544018988548, guid: af970090bd501e845a4d8d417a097141, type: 3}
+      propertyPath: m_Radius
+      value: 0.0966821
+      objectReference: {fileID: 0}
     - target: {fileID: 2338844544018988554, guid: af970090bd501e845a4d8d417a097141, type: 3}
       propertyPath: playersPosition.Array.data[0]
       value: 

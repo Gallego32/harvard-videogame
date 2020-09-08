@@ -43,7 +43,6 @@ public class PlayerStats : Stats
         GetComponent<AttackControl>().enabled = false;
         GetComponent<ClampPosition>().enabled = false;
 
-        Debug.Log("Entered Waiter");
         // Wait some time before removing entity
         yield return new WaitForSeconds(1f);
 

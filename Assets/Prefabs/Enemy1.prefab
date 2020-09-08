@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2338844544018988546}
   - component: {fileID: 2338844544018988547}
   m_Layer: 9
-  m_Name: Enemy1 1
+  m_Name: Enemy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,6 +201,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   friction: {fileID: 6200000, guid: b0b75c8ca3f86534581b3372fb9c8119, type: 2}
   noFriction: {fileID: 6200000, guid: 9c45cbfea0f1e88448a42c3652cb336e, type: 2}
+  attackCenter: {fileID: 2338844544484396917}
+  canAttack:
+    serializedVersion: 2
+    m_Bits: 256
   playersPosition:
   - {fileID: 0}
   - {fileID: 0}

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -23,8 +24,21 @@ public class EnemyAI : MonoBehaviour
     // Manage Stats
     private EnemyStats stats;
 
+    // Manage our attack center point
+    public Transform attackCenter;
+
+    // Only attack the layers we want
+    public LayerMask canAttack;
+
     // Movement variables
     private float xMovement = 0f;
+    
+    public float XMovement
+    {
+        get { return this.xMovement; }
+        set { this.xMovement = value; }
+    }
+
     private bool jump = false;
     private float speed;
     private float detectDistance;
@@ -57,6 +71,8 @@ public class EnemyAI : MonoBehaviour
         // This will only perform when the enemy hasn't found the Player
         StartCoroutine(RandomMovement());
 
+        // StartCoroutine FollowPlayer which will allow the enemy to know if there are any
+        // players nearby and which one is the closest one
         StartCoroutine(FollowPlayer());
     }
 
@@ -66,18 +82,13 @@ public class EnemyAI : MonoBehaviour
         // Movement animation logic
         animation.SetFloat("Speed", Mathf.Abs(xMovement));
 
-
-        if (!foundPlayer)
-        {
-            
-        }
-
     }
 
     void FixedUpdate()
     {
         // Perform Movement
         controller.Move(xMovement * Time.fixedDeltaTime, false, jump);
+        jump = false;
 
         // Avoid falling in slopes when the enemy isn't moving
         if (xMovement == 0)
@@ -92,26 +103,27 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    // Performed only if the players are far enough
+    // The enemy will walk to a random direction for a random time
     IEnumerator RandomMovement()
     {
         while (true)
         {
-            //Debug.Log(foundPlayer);
             if (!foundPlayer)
             {
                 float direction = Random.value > 0.5 ? 1 : -1;
-            xMovement = (speed / 2) * direction;
+                xMovement = (speed / 2) * direction;
 
-            yield return new WaitForSeconds(Random.Range(0.5f, 0.7f));
+                yield return new WaitForSeconds(Random.Range(0.5f, 0.7f));
 
-            xMovement = 0;
+                xMovement = 0;
 
-            yield return new WaitForSeconds(Random.Range(2, 4));
+                yield return new WaitForSeconds(Random.Range(2, 4));
             } else yield return new WaitForSeconds(5);
         }
     }
 
-    // BUGGY BEHAVIOUR
+    // The enemy will detect the player and will choose to go after the closest player
     IEnumerator FollowPlayer()
     {
         while (true)
@@ -120,20 +132,60 @@ public class EnemyAI : MonoBehaviour
             int closePlayers = 0;
 
             foreach (Transform player in playersPosition)
-            if (player.position.x > transform.position.x - detectDistance &&
-                player.position.x < transform.position.x + detectDistance)
+                if (player.position.x > transform.position.x - detectDistance &&
+                    player.position.x < transform.position.x + detectDistance &&
+                    player.gameObject.active)
                     closePlayers++;
 
             foundPlayer = closePlayers > 0 ? true : false;
 
+            // Attack and chasing after logic
             if (foundPlayer)
             {
                 float direction = closestPlayer(playersPosition);
                 xMovement = speed * direction;
-            }
 
-            // Update every half of a second
-            yield return new WaitForSeconds(0.3f);
+                foreach (Transform player in playersPosition)
+                {
+                    if (player.position.x > transform.position.x - stats.Range * 3/2 &&
+                        player.position.x < transform.position.x + stats.Range * 3/2 &&
+                        player.position.y > transform.position.y - stats.Range * 3/2 &&
+                        player.position.y < transform.position.y + stats.Range * 3/2 &&
+                        player.gameObject.active)
+                        xMovement = 0;
+                }
+                
+                if (xMovement == 0)
+                    // Perform Attack animation
+                    animation.SetTrigger("Attack");
+
+                yield return new WaitForSeconds(1f / stats.AttackSpeed);
+                
+            } else yield return new WaitForSeconds(0.3f);        
+        }
+    }
+
+    // Attack will be performed in an animation Event
+    void Attack()
+    {
+        // We get an array of collided objects depending of the selected "canAttack" layer
+        Collider2D[] hit = Physics2D.OverlapCircleAll(attackCenter.position, stats.Range, canAttack);
+        
+        // This array will get both circle and box collider 2D so we need some logic
+        // to remove duplicated object
+        // The best way I have found is creating a list with the non repeated objects.
+        List<GameObject> hitList = RemoveDuplicated(hit);
+
+        // Call hit's enemy function
+        foreach(GameObject enemy in hitList)
+        {
+            if (enemy != gameObject) 
+            {
+                if (enemy.layer == 9)
+                    enemy.GetComponent<EnemyStats>().Hit(stats.Attack);
+                else 
+                    enemy.GetComponent<PlayerStats>().Hit(stats.Attack);
+            }
         }
     }
 
@@ -145,19 +197,32 @@ public class EnemyAI : MonoBehaviour
         // Check which player is closer to the enemy
         foreach (Transform player in players)
         {
-            float distance = Mathf.Abs(transform.position.x - player.position.x);
-            
-            if (distance < closestDistance)
+            if (player.gameObject.active)
             {
-                closestDistance = distance;
-                direction = player.position.x < transform.position.x ? -1 : 1;
-            }
-
-            //Debug.Log("Distancia: " + distance);
+                float distance = Mathf.Abs(transform.position.x - player.position.x);
+            
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    direction = player.position.x < transform.position.x ? -1 : 1;
+                }
+            }     
         }
-        //Debug.Log("Posicion: " + closestDistance);
 
         return direction;
+    }
+
+    // RemoveDuplicated method so we don't hit an enemy twice
+    private List<GameObject> RemoveDuplicated(Collider2D[] hit)
+    {
+        List<GameObject> hitList = new List<GameObject>();
+
+        for (int i = 0; i < hit.Length; i ++)
+        {
+            if (!hitList.Contains(hit[i].gameObject))
+                hitList.Add(hit[i].gameObject);
+        }
+        return hitList;
     }
 
 }

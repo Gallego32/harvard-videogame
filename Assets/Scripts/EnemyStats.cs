@@ -28,7 +28,10 @@ public class EnemyStats : Stats
         // Perform Death animation
         animation.SetBool("Dead", true);
 
-        Debug.Log("Entered Waiter");
+        // Avoid moving and attacking when dies
+        GetComponent<EnemyAI>().XMovement = 0;
+        GetComponent<EnemyAI>().enabled = false;
+
         // Wait some time before removing entity
         yield return new WaitForSeconds(1f);
 
