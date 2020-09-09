@@ -107,6 +107,23 @@ public class EnemyAI : MonoBehaviour
             rb.sharedMaterial = noFriction;
             cc.sharedMaterial = noFriction;
         }
+
+        // Behaviour for Animator
+        if (rb.velocity.y < -0.5f)
+            animation.SetBool("Falling", true);
+        else {
+            if (rb.velocity.y > 1f)
+                animation.SetBool("Jump", true);
+
+            animation.SetBool("Falling", false);
+        }            
+
+        if (controller.m_Grounded) {
+            animation.SetBool("Jump",false);
+            animation.SetBool("Falling", false);
+            animation.SetBool("Grounded", true);
+        } else 
+            animation.SetBool("Grounded", false);
     }
 
     // Performed only if the players are far enough
@@ -125,7 +142,7 @@ public class EnemyAI : MonoBehaviour
                 xMovement = 0;
 
                 yield return new WaitForSeconds(Random.Range(2, 4));
-            } else yield return new WaitForSeconds(5);
+            } else yield return new WaitForSeconds(3);
         }
     }
 
@@ -162,11 +179,12 @@ public class EnemyAI : MonoBehaviour
                 }
                 
                 if (xMovement == 0)
+                {
                     // Perform Attack animation
                     animation.SetTrigger("Attack");
-
-                yield return new WaitForSeconds(1f / stats.AttackSpeed);
-                
+                    yield return new WaitForSeconds(1f / stats.AttackSpeed);
+                }   else yield return new WaitForSeconds(0.1f);      
+  
             } else yield return new WaitForSeconds(0.3f);        
         }
     }
@@ -180,7 +198,6 @@ public class EnemyAI : MonoBehaviour
             {
                 Collider2D[] hit = Physics2D.OverlapCircleAll(attackCenter.position, stats.Range / 2, shouldJump);
 
-                Debug.Log(hit.Length);
                 if (hit.Length > 0)
                     jump = true;
             }
@@ -257,6 +274,4 @@ public class EnemyAI : MonoBehaviour
 
 		Gizmos.DrawWireSphere(attackCenter.position, 0.2f);
 	}
-    
-
 }

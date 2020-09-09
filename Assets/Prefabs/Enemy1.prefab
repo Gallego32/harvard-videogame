@@ -110,7 +110,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 311
+    m_Bits: 1335
   m_GroundCheck: {fileID: 2338844545625387983}
   m_CeilingCheck: {fileID: 2338844544690839944}
   m_CrouchDisableCollider: {fileID: 0}
@@ -205,6 +205,9 @@ MonoBehaviour:
   canAttack:
     serializedVersion: 2
     m_Bits: 256
+  shouldJump:
+    serializedVersion: 2
+    m_Bits: 1024
   playersPosition:
   - {fileID: 0}
   - {fileID: 0}

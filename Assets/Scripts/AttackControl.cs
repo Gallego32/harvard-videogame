@@ -39,7 +39,8 @@ public class AttackControl : MonoBehaviour
     {
         if (Input.GetButtonDown("Attack" + player) && Time.time >= nextAttackTime) 
         {
-            Attack();
+            // Perform Attack animation
+            animation.SetTrigger("Attack");
             nextAttackTime = Time.time + (1f / stats.AttackSpeed);
         }
             
@@ -47,9 +48,6 @@ public class AttackControl : MonoBehaviour
 
     void Attack()
     {
-        // Perform Attack animation
-        animation.SetTrigger("Attack");
-
         // We get an array of collided objects depending of the selected "canAttack" layer
         Collider2D[] hit = Physics2D.OverlapCircleAll(attackCenter.position, stats.Range, canAttack);
         
