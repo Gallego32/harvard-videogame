@@ -44,7 +44,7 @@ public class LevelGenerator : MonoBehaviour
         for (int i = 0; i < size.x; i++)
             for (int j = 0; j < size.y; j++, k++)
             {
-                positions[k] = new Vector3Int(j + offset.x, - i + offset.y, 0);
+                positions[k] = new Vector3Int(i + offset.x, - j + offset.y, 0);
                 tileArray[k] = mapArray[i, j] ? (Random.value > 0.5 ? tileA : tileB) : null;
             }
 
@@ -61,9 +61,29 @@ public class LevelGenerator : MonoBehaviour
 
     void initialArray(bool[,] array, Vector2Int size)
     {
+        bool gap = false;
+        int gapWidth = 0;
+
         for (int i = 0; i < size.x; i++)
+        {
+            if (gap)
+            {    
+                gapWidth--;
+                gap = gapWidth == 0 ? false : true; 
+            }
+            
             for (int j = 0; j < size.y; j++)
-                array[i ,j] = true;
+            {
+                array[i, j] = gap ? false : true;
+            } 
+            
+            if (!gap)
+                gap = Random.value > 0.9 ? true : false;
+
+            if (gap && gapWidth == 0)
+                gapWidth = Random.Range(2, 4);
+
+        }      
     }
 
     void showArray(bool[] array)
