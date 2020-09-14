@@ -6,7 +6,6 @@ using System.Linq;
 
 public class LevelGenerator : MonoBehaviour
 {
-
     public TileBase tileA;
     public TileBase tileB;
     public Vector2Int size;
@@ -15,7 +14,6 @@ public class LevelGenerator : MonoBehaviour
     Tilemap baseMap, foreground, background;
 
     private bool[,] mapArray;
-
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +27,12 @@ public class LevelGenerator : MonoBehaviour
 
         mapArray = new bool[size.x, size.y];
         initialArray(mapArray, size);
-
+        /*
         mapArray[0, 0] = false;
         mapArray[0, 1] = false;
         mapArray[3, 1] = false;
         mapArray[3, 3] = false;
-
+        */
         for (int i = 0; i < positions.Length; i++)
         {
             //positions[i] = new Vector3Int(i % size.x + 10, - i / size.y + 10, 0);
@@ -45,24 +43,26 @@ public class LevelGenerator : MonoBehaviour
             for (int j = 0; j < size.y; j++, k++)
             {
                 positions[k] = new Vector3Int(i + offset.x, - j + offset.y, 0);
-                tileArray[k] = mapArray[i, j] ? (Random.value > 0.5 ? tileA : tileB) : null;
+                TileBase tile = isTop(i, j) ? tileA : tileB;
+                tileArray[k] = mapArray[i, j] ? tile : null;
             }
 
         //tileArray[1] = null;
 
         baseMap.SetTiles(positions, tileArray);
 
-        /*showArray(mapArray);
-
-        Debug.Log("\n" + (mapArray[0] ? 1 : 0));
-        Debug.Log("\n" + (mapArray[1] ? 1 : 0));
-        Debug.Log("\n" + (mapArray[2] ? 1 : 0));*/
     }
 
     void initialArray(bool[,] array, Vector2Int size)
     {
+        // Gap control variables
         bool gap = false;
         int gapWidth = 0;
+        float gapProbability = Random.Range(0.85f, 0.95f);
+
+        // Terrain cut variables
+        int topCut = Random.Range(0, size.y / 4);
+        int bottomCut = Random.Range(size.y - size.y / 2, size.y - 1);
 
         for (int i = 0; i < size.x; i++)
         {
@@ -74,23 +74,46 @@ public class LevelGenerator : MonoBehaviour
             
             for (int j = 0; j < size.y; j++)
             {
-                array[i, j] = gap ? false : true;
+                if (gap || j <= topCut || j >= bottomCut)
+                     array[i, j] = false;
+                else
+                     array[i, j] = true;
+                //array[i, j] = gap ? false : true;
             } 
             
+            // Gap behaviour
             if (!gap)
-                gap = Random.value > 0.9 ? true : false;
+                gap = Random.value > gapProbability ? true : false;
 
             if (gap && gapWidth == 0)
                 gapWidth = Random.Range(2, 4);
 
+
+            // TopCut change
+            if (Random.value > 0.7)
+                topCut = Mathf.Clamp(topCut + Random.Range(-3, 3), 0, size.y / 3);
+
+            // BottomCut change
+            if (Random.value > 0.7)
+                bottomCut = Mathf.Clamp(bottomCut + Random.Range(-3, 3), size.y - size.y / 3, size.y - 1);
         }      
     }
 
-    void showArray(bool[] array)
+    bool isTop(int x, int y)
     {
-        for (int i = 0; i < array.Length; i++)
-            Debug.Log(" " + (array[i] ? 1 : 0).ToString());
-        
+        if (!mapArray[x, y])
+            return false;
+
+        bool isTop = true;
+        int j = y - 1;
+        for (; j > 0 && !mapArray[x, j]; j--);
+
+        return j == 0 ? true : false;
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+            Start();
+    }
 }
