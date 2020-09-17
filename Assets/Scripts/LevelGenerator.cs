@@ -6,10 +6,14 @@ using System.Linq;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public TileBase tileA;
-    public TileBase tileB;
     public Vector2Int size;
     public Vector2Int offset;
+
+    public int levelStyle;
+    public List<TileBase> topperTiles;
+    public List<TileBase> fillTiles;
+    public List<TileBase> fillAlternative;
+    public List<TileBase> backgroundToppers;
 
     Tilemap baseMap, foreground, background;
 
@@ -18,41 +22,64 @@ public class LevelGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Reference each part of the TileMap
         baseMap = GameObject.Find("Tilemap_Base").GetComponent<Tilemap>();
         foreground = GameObject.Find("Foreground").GetComponent<Tilemap>();
         background = GameObject.Find("Background").GetComponent<Tilemap>();
 
+        // Create positions for Ground and BackGround
         Vector3Int[] positions = new Vector3Int[size.x * size.y];
+        Vector3Int[] backPositions = new Vector3Int[size.x * size.y];
+        
+        // Create TileBae arrays for Ground and BackGround
         TileBase[] tileArray = new TileBase[positions.Length];
+        TileBase[] backTileArray = new TileBase[positions.Length];
 
+        // Initialize array
         mapArray = new bool[size.x, size.y];
         initialArray(mapArray, size);
-        /*
-        mapArray[0, 0] = false;
-        mapArray[0, 1] = false;
-        mapArray[3, 1] = false;
-        mapArray[3, 3] = false;
-        */
-        for (int i = 0; i < positions.Length; i++)
-        {
-            //positions[i] = new Vector3Int(i % size.x + 10, - i / size.y + 10, 0);
-            //tileArray[i] = i % 2 == 0 ? tileA : tileB;
-        }
+
         int k = 0;
         for (int i = 0; i < size.x; i++)
             for (int j = 0; j < size.y; j++, k++)
             {
+                // Setting tiles positions
                 positions[k] = new Vector3Int(i + offset.x, - j + offset.y, 0);
-                TileBase tile = isTop(i, j) ? tileA : tileB;
+                backPositions[k] = new Vector3Int(i + offset.x, - j + offset.y + 1, 0);
+
+                TileBase tile;
+                TileBase background;
+
+                bool foundTop = false;
+
+                if (isTop(i, j) && !foundTop)
+                {
+                    // Setting special tiles for top tiles
+                    tile = topperTiles[levelStyle];
+                    background = Random.value > 0.6 ? backgroundToppers[Random.Range(0,3) + levelStyle * 3] : null;
+
+                    // Setting foundTop to true to avoid checking for top when we have found it in a column
+                    // Performance decision
+                    foundTop = true;
+                } else
+                {    
+                    // Setting normal tiles and no background tiles
+                    tile = Random.value > 0.03 ? fillTiles[levelStyle] : fillAlternative[Random.Range(0,2) + levelStyle * 2];
+                    background = null;
+                }
+
+                // Setting tileArrays
                 tileArray[k] = mapArray[i, j] ? tile : null;
+                backTileArray[k] = background;
             }
 
-        //tileArray[1] = null;
-
+        // Setting tiles into the TileMap
         baseMap.SetTiles(positions, tileArray);
-
+        background.SetTiles(backPositions, backTileArray);
     }
 
+    // Initialize Ground Tiles array
+    // We also perform the logic of the terrain
     void initialArray(bool[,] array, Vector2Int size)
     {
         // Gap control variables
@@ -99,6 +126,7 @@ public class LevelGenerator : MonoBehaviour
         }      
     }
 
+    // Checking if a tile is the first one; the topper
     bool isTop(int x, int y)
     {
         if (!mapArray[x, y])
@@ -111,6 +139,7 @@ public class LevelGenerator : MonoBehaviour
         return j == 0 ? true : false;
     }
 
+    // Debug function
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.J))
