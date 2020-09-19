@@ -9961,7 +9961,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 0bf219b640e950f47bc76349e19dfbd9, type: 2}
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 669d5d4621eab744d8c359b290c2b60e, type: 2}
+    m_Data: {fileID: 11400000, guid: d440a6af2d49108448e2feaef2a07452, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: c80bfc7df82107f4dbe24d04ab2bc789, type: 2}
   - m_RefCount: 2
@@ -10116,7 +10116,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300112, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300104, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
+    m_Data: {fileID: 21300116, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300118, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
   - m_RefCount: 2
@@ -11481,6 +11481,26 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0790151a6f6442140b38bed135f7fdef, type: 2}
   - {fileID: 11400000, guid: b263f32722d726d4ca291f87e2084600, type: 2}
   - {fileID: 11400000, guid: 18f75f2d5b18bce498b7cc74acc35ce6, type: 2}
+  leftCorner:
+  - {fileID: 11400000, guid: d2774824ffb1d264fa1a5b08e2d073a3, type: 2}
+  - {fileID: 11400000, guid: e34f76b93675bbe4abd7a94560b009af, type: 2}
+  - {fileID: 11400000, guid: 0bf219b640e950f47bc76349e19dfbd9, type: 2}
+  rightCorner:
+  - {fileID: 11400000, guid: 72c8b9fe0634d1d4e9ae3f571fee0b66, type: 2}
+  - {fileID: 11400000, guid: c94f06adca630ff4ca5f803f441d6a3b, type: 2}
+  - {fileID: 11400000, guid: c80bfc7df82107f4dbe24d04ab2bc789, type: 2}
+  leftSide:
+  - {fileID: 11400000, guid: c64ec218ea1559a44990b50d49e933f2, type: 2}
+  - {fileID: 11400000, guid: acb1829419e462c48b7a12d275f5e3d6, type: 2}
+  - {fileID: 11400000, guid: 7cbb429eb334ab642b8062c4222e30d2, type: 2}
+  rightSide:
+  - {fileID: 11400000, guid: 97ce0f8462de8084cafa6deb2a94bdd6, type: 2}
+  - {fileID: 11400000, guid: 63e3977a1a3925840879aad4bc96c357, type: 2}
+  - {fileID: 11400000, guid: 024b36ef097142d44a0e23bbf0637e7c, type: 2}
+  downSide:
+  - {fileID: 11400000, guid: 3587de7a5084d1d409183b6f45ec3bef, type: 2}
+  - {fileID: 11400000, guid: 50c3ea9cb6807ea4897db3ec6f73346a, type: 2}
+  - {fileID: 11400000, guid: a91b0f56610c3b64d830403fd36a5aa3, type: 2}
 --- !u!4 &1019980007
 Transform:
   m_ObjectHideFlags: 0

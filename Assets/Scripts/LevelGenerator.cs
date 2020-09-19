@@ -12,8 +12,17 @@ public class LevelGenerator : MonoBehaviour
     public int levelStyle;
     public List<TileBase> topperTiles;
     public List<TileBase> fillTiles;
+
     public List<TileBase> fillAlternative;
     public List<TileBase> backgroundToppers;
+
+    public List<TileBase> leftCorner;
+    public List<TileBase> rightCorner;
+
+    public List<TileBase> leftSide;
+    public List<TileBase> rightSide;
+
+    public List<TileBase> downSide;
 
     Tilemap baseMap, foreground, background;
 
@@ -41,7 +50,7 @@ public class LevelGenerator : MonoBehaviour
 
         int k = 0;
         for (int i = 0; i < size.x; i++)
-            for (int j = 0; j < size.y; j++, k++)
+        {   for (int j = 0; j < size.y; j++, k++)
             {
                 // Setting tiles positions
                 positions[k] = new Vector3Int(i + offset.x, - j + offset.y, 0);
@@ -54,24 +63,49 @@ public class LevelGenerator : MonoBehaviour
 
                 if (isTop(i, j) && !foundTop)
                 {
-                    // Setting special tiles for top tiles
-                    tile = topperTiles[levelStyle];
+                    if (isLeftSide(i, j))
+                        tile = leftCorner[levelStyle];
+                    else
+                    {
+                        if (isRightSide(i, j))
+                            tile = rightCorner[levelStyle];
+                        else
+                            // Setting special tiles for top tiles
+                            tile = topperTiles[levelStyle];
+                    }
+                    
                     background = Random.value > 0.6 ? backgroundToppers[Random.Range(0,3) + levelStyle * 3] : null;
 
                     // Setting foundTop to true to avoid checking for top when we have found it in a column
                     // Performance decision
                     foundTop = true;
+
                 } else
-                {    
-                    // Setting normal tiles and no background tiles
-                    tile = Random.value > 0.03 ? fillTiles[levelStyle] : fillAlternative[Random.Range(0,2) + levelStyle * 2];
+                {   
+                    if (isLeftSide(i, j))
+                        tile = leftSide[levelStyle];
+                    else
+                    {
+                        if (isRightSide(i, j))
+                          tile = rightSide[levelStyle];
+                        else if (isDownSide(i, j))
+                            tile = downSide[levelStyle];
+                        else
+                            // Setting normal tiles and no background tiles
+                            tile = Random.value > 0.03 ? fillTiles[levelStyle] : fillAlternative[Random.Range(0,2) + levelStyle * 2];
+                    }
                     background = null;
                 }
-
+        
                 // Setting tileArrays
                 tileArray[k] = mapArray[i, j] ? tile : null;
                 backTileArray[k] = background;
             }
+            /*
+            if (Random.value > 0.95)
+                offset.y++;
+            */
+        }
 
         // Setting tiles into the TileMap
         baseMap.SetTiles(positions, tileArray);
@@ -137,6 +171,30 @@ public class LevelGenerator : MonoBehaviour
         for (; j > 0 && !mapArray[x, j]; j--);
 
         return j == 0 ? true : false;
+    }
+
+    bool isLeftSide(int x, int y)
+    {
+        if (x == 0)
+            return true;
+
+        return !mapArray[Mathf.Max(x - 1, 0), y];
+    }
+
+    bool isRightSide(int x, int y)
+    {
+        if (x == size.x - 1)
+            return true;
+
+        return !mapArray[Mathf.Min(x + 1, size.x - 1), y];
+    }
+
+    bool isDownSide(int x, int y)
+    {
+        if (y == size.y)
+            return true;
+
+        return !mapArray[x, Mathf.Min(y + 1, size.y)];
     }
 
     // Debug function
