@@ -21,11 +21,15 @@ public class LevelGenerator : MonoBehaviour
 
     public List<TileBase> leftSide;
     public List<TileBase> rightSide;
-
     public List<TileBase> downSide;
 
     public List<GameObject> enemies;
-    public GameObject props;
+
+    // Props spawn objects
+    private List<GameObject>[] props;
+    public List<GameObject> basicProps;
+    public List<GameObject> darkProps;
+    public List<GameObject> purpleProps;
 
     private Tilemap baseMap, foreground, background;
 
@@ -34,7 +38,6 @@ public class LevelGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(props.GetComponent<Renderer>().bounds.size.y);
         // Reference each part of the TileMap
         baseMap = GameObject.Find("Tilemap_Base").GetComponent<Tilemap>();
         foreground = GameObject.Find("Foreground").GetComponent<Tilemap>();
@@ -52,6 +55,12 @@ public class LevelGenerator : MonoBehaviour
         mapArray = new bool[size.x, size.y];
         initialArray(mapArray, size);
 
+        // Set props variables
+        props = new List<GameObject>[fillTiles.Count];
+        props[0] = basicProps;
+        props[1] = darkProps;
+        props[2] = purpleProps;
+
         int k = 0;
         for (int i = 0; i < size.x; i++)
         {   for (int j = 0; j < size.y; j++, k++)
@@ -65,16 +74,24 @@ public class LevelGenerator : MonoBehaviour
 
                 bool foundTop = false;
 
+                // Check if we are on the top
                 if (isTop(i, j) && !foundTop)
                 {
+                    // Generate ENEMIES
                     if (Random.value > 0.95)
                        generateObject(enemies[Random.Range(0, enemies.Count)], (i + offset.x) * 0.159f, 1, GameObject.Find("EnemiesParent"));
 
-                    float propWidth = props.GetComponent<Renderer>().bounds.size.x;
-                    float propHeight = props.GetComponent<Renderer>().bounds.size.y;
+                    // Generate PROPS
+                    if (Random.value > 0.85)
+                    {
+                        GameObject prop = props[levelStyle][Random.Range(0, props[levelStyle].Count)];
 
-                    if (hasEmptySpace(i, j, (int)Mathf.Ceil(propWidth / 0.159f)))
-                        generateObject(props, (i + offset.x) * 0.159f + propWidth / 2, (offset.y - j + 1) * 0.159f + propHeight / 2, GameObject.Find("PropsParent"));
+                        float propWidth = prop.GetComponent<Renderer>().bounds.size.x;
+                        float propHeight = prop.GetComponent<Renderer>().bounds.size.y;
+
+                        if (hasEmptySpace(i, j, (int)Mathf.Ceil(propWidth / 0.159f)))
+                            generateObject(prop, (i + offset.x) * 0.159f + propWidth / 2, (offset.y - j + 1) * 0.159f + propHeight / 2, GameObject.Find("PropsParent"));
+                    }
 
                     if (isLeftSide(i, j))
                         tile = leftCorner[levelStyle];
@@ -93,6 +110,7 @@ public class LevelGenerator : MonoBehaviour
                     // Performance decision
                     foundTop = true;
 
+                // If we are not on the top
                 } else
                 {   
                     if (isLeftSide(i, j))
@@ -114,18 +132,11 @@ public class LevelGenerator : MonoBehaviour
                 tileArray[k] = mapArray[i, j] ? tile : null;
                 backTileArray[k] = background;
             }
-            /*
-            if (Random.value > 0.95)
-                offset.y++;
-            */
         }
 
         // Setting tiles into the TileMap
         baseMap.SetTiles(positions, tileArray);
         background.SetTiles(backPositions, backTileArray);
-
-        //generateEnemies(enemy, (int)Mathf.Round(transform.position.x) + offset.x / 16 + 2, 1);
-        //generateEnemies(enemy, offset.x * 0.159f, 1);
     }
 
     // Initialize Ground Tiles array
@@ -176,7 +187,7 @@ public class LevelGenerator : MonoBehaviour
         }      
     }
 
-    // Checking if a tile is the first one; the topper
+    // Checking if a tile is the first one, the topper
     private bool isTop(int x, int y)
     {
         if (!mapArray[x, y])
@@ -189,6 +200,7 @@ public class LevelGenerator : MonoBehaviour
         return j == 0 ? true : false;
     }
 
+    // Check if it's left, right top or down side
     private bool isLeftSide(int x, int y)
     {
         if (x == 0)
@@ -220,6 +232,8 @@ public class LevelGenerator : MonoBehaviour
         myPrefab.transform.parent = parent.transform;
     }
 
+    // Will determine if we have space to spawn a determined object with a determined width
+    // We check if we are on the top and if we don't find any kind of hole
     private bool hasEmptySpace(int x, int y, int width)
     {
         int j = 0;
