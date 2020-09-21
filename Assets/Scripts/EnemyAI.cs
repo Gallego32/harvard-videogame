@@ -68,8 +68,6 @@ public class EnemyAI : MonoBehaviour
         speed = stats.Speed;
         detectDistance = stats.detectDistance;
 
-        Debug.Log(speed);
-
         // StartCoroutine of AI RandomMovement
         // This will only perform when the enemy hasn't found the Player
         StartCoroutine(RandomMovement());
