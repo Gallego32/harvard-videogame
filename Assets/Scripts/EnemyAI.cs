@@ -26,6 +26,7 @@ public class EnemyAI : MonoBehaviour
 
     // Manage our attack center point
     public Transform attackCenter;
+    public Transform holeDetector;
 
     // Only attack the layers we want
     public LayerMask canAttack;
@@ -78,6 +79,8 @@ public class EnemyAI : MonoBehaviour
 
         // The enemy will jump if it collides with something in the way
         StartCoroutine(ShouldJump());
+
+        StartCoroutine(JumpOverHoles());
     }
 
     // Update is called once per frame
@@ -175,14 +178,21 @@ public class EnemyAI : MonoBehaviour
                         player.gameObject.active)
                         xMovement = 0;
                 }
+
+                
                 
                 if (xMovement == 0)
                 {
                     // Perform Attack animation
                     animation.SetTrigger("Attack");
                     yield return new WaitForSeconds(1f / stats.AttackSpeed);
-                }   else yield return new WaitForSeconds(0.1f);      
-  
+                }   else 
+                {
+                        /*if (Mathf.Abs(rb.velocity.x) <= 0.5f)
+                        jump = true;
+                        */    
+                    yield return new WaitForSeconds(0.1f);      
+                }
             } else yield return new WaitForSeconds(0.3f);        
         }
     }
@@ -201,6 +211,23 @@ public class EnemyAI : MonoBehaviour
             }
             
             yield return new WaitForSeconds(0.3f);
+        }
+    }
+
+    IEnumerator JumpOverHoles()
+    {
+        while (true)
+        {
+            if (foundPlayer && Mathf.Abs(xMovement) > 0)
+            {
+                Collider2D[] hit = Physics2D.OverlapCircleAll(holeDetector.position, 0.05f, shouldJump);
+                
+                Debug.Log(hit.Length);
+                if (hit.Length == 0)
+                    jump = true;
+            }
+
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -270,6 +297,6 @@ public class EnemyAI : MonoBehaviour
         if (attackCenter == null)
             return;
 
-		Gizmos.DrawWireSphere(attackCenter.position, 0.2f);
+		Gizmos.DrawWireSphere(holeDetector.position, 0.05f);
 	}
 }

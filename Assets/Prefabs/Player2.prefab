@@ -25,7 +25,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1863259120173032686
 Transform:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 311
+    m_Bits: 1335
   m_GroundCheck: {fileID: 1863259120892737258}
   m_CeilingCheck: {fileID: 1863259120911858648}
   m_CrouchDisableCollider: {fileID: 0}
@@ -210,9 +210,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07229671, y: -0.11138451}
+  m_Offset: {x: 0.040551603, y: -0.08938858}
   serializedVersion: 2
-  m_Radius: 0.12183425
+  m_Radius: 0.14809242
 --- !u!114 &1863259120173032656
 MonoBehaviour:
   m_ObjectHideFlags: 0

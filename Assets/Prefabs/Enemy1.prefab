@@ -38,6 +38,7 @@ Transform:
   - {fileID: 2338844545625387983}
   - {fileID: 2338844544690839944}
   - {fileID: 2338844544484396917}
+  - {fileID: 93438359011867975}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -60,7 +61,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -186,7 +187,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.12175813}
   serializedVersion: 2
-  m_Radius: 0.0966821
+  m_Radius: 0.1001041
 --- !u!114 &2338844544018988554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +203,7 @@ MonoBehaviour:
   friction: {fileID: 6200000, guid: b0b75c8ca3f86534581b3372fb9c8119, type: 2}
   noFriction: {fileID: 6200000, guid: 9c45cbfea0f1e88448a42c3652cb336e, type: 2}
   attackCenter: {fileID: 2338844544484396917}
+  holeDetector: {fileID: 93438359011867975}
   canAttack:
     serializedVersion: 2
     m_Bits: 256
@@ -246,7 +248,7 @@ MonoBehaviour:
   baseAttack: 20
   baseDefense: 10
   baseSpeed: 8
-  baseRange: 0.4
+  baseRange: 0.3
   baseAttackSpeed: 1.8
   detectDistance: 2
 --- !u!1 &2338844544484396914
@@ -338,4 +340,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2338844544018988555}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2974434858087200214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 93438359011867975}
+  m_Layer: 9
+  m_Name: HoleDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &93438359011867975
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2974434858087200214}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.217, y: -0.029, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2338844544018988555}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
