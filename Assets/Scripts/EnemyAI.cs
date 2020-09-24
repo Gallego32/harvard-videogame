@@ -124,7 +124,10 @@ public class EnemyAI : MonoBehaviour
             animation.SetBool("Falling", false);
             animation.SetBool("Grounded", true);
         } else 
+        {    
             animation.SetBool("Grounded", false);
+            jump = false;
+        }
     }
 
     // Performed only if the players are far enough
@@ -221,13 +224,16 @@ public class EnemyAI : MonoBehaviour
             if (foundPlayer && Mathf.Abs(xMovement) > 0)
             {
                 Collider2D[] hit = Physics2D.OverlapCircleAll(holeDetector.position, 0.05f, shouldJump);
+                // No estoy del todo seguro
+                //Collider2D[] hit2 = Physics2D.OverlapCircleAll(new Vector3(xMovement > 0  ? holeDetector.position.x + .15f : holeDetector.position.x - .15f, holeDetector.position.y - .1f, 0), 0.05f, shouldJump);
                 
-                Debug.Log(hit.Length);
-                if (hit.Length == 0)
+                //new Vector3(holeDetector.position.x + .15f, holeDetector.position.y - .1f, 0)
+                //Debug.Log(hit.Length);
+                if (hit.Length == 0 /*&& hit2.Length == 0*/)
                     jump = true;
             }
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
@@ -298,5 +304,6 @@ public class EnemyAI : MonoBehaviour
             return;
 
 		Gizmos.DrawWireSphere(holeDetector.position, 0.05f);
+        //Gizmos.DrawWireSphere(new Vector3(holeDetector.position.x + .15f, holeDetector.position.y - .1f, 0), 0.05f);
 	}
 }
