@@ -6,6 +6,12 @@ public class EnemyStats : Stats
 {
     public float detectDistance;
 
+    void Start()
+    {
+        // Dissapear on height coroutine
+        StartCoroutine(Disappear());
+    }
+
     public void Hit(float damage)
     {
         // Perform Hit animation
@@ -38,5 +44,16 @@ public class EnemyStats : Stats
         Debug.Log("Die " + gameObject.tag);
 
         Destroy(gameObject);
+    }
+
+    private IEnumerator Disappear()
+    {
+        while (true)
+        {
+            if (transform.position.y < -10)
+                Destroy(gameObject);
+
+            yield return new WaitForSeconds(1);
+        }
     }
 }

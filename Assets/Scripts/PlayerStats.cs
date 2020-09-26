@@ -10,9 +10,18 @@ public class PlayerStats : Stats
     // Reference to our healthBar;
     public HealthBar healthBar;
 
+    // Keeps track of which player we are
+    private int player;
+
     void Start()
     {
         healthBar.SetMaxHealth(MaxHealth);
+
+        // Check whether we are player 1 or 2
+        player = gameObject.tag == "Player1" ? 1 : 2;
+
+        // Dissapear on height coroutine
+        StartCoroutine(Disappear());
     }
 
     // Update is called once per frame
@@ -59,9 +68,21 @@ public class PlayerStats : Stats
         Debug.Log("Die " + gameObject.tag);
         // SetActive to false to Player object 
         // * We don't want to destroy the object in the case of the players*
-        if (Equals(gameObject.tag, "Player1"))
-            GameObject.Find("Player1").SetActive(false);
-        else if (Equals(gameObject.tag, "Player2"))
-            GameObject.Find("Player2").SetActive(false);
+        GameObject.Find("Player" + player).SetActive(false);
+    }
+
+    private IEnumerator Disappear()
+    {
+        while (true)
+        {
+            if (transform.position.y < -10)
+            {
+                GameObject.Find("Player" + player).SetActive(false);
+
+                healthBar.SetHealth(0);
+            }    
+
+            yield return new WaitForSeconds(1);
+        }
     }
 }
