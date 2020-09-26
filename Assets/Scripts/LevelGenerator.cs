@@ -246,6 +246,30 @@ public class LevelGenerator : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.J))
+        {
+            ClearChildren(GameObject.Find("PropsParent"));
+            ClearChildren(GameObject.Find("EnemiesParent"));
             Start();
+        }
+    }
+
+    // Function used to destroy children objects from EnemiesParent and PropsParent
+    // This way we clear the level
+    private void ClearChildren(GameObject parent)
+    {
+        GameObject[] children = new GameObject[parent.transform.childCount];
+
+        int i = 0;
+        foreach(Transform child in parent.transform)
+        {
+            children[i] = child.gameObject;
+            i++;
+        }
+
+        foreach (GameObject child in children)
+        {
+            Destroy(child.gameObject);
+        }
+
     }
 }
