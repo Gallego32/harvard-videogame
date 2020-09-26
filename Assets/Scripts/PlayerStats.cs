@@ -7,6 +7,14 @@ public class PlayerStats : Stats
     // Manage level
     private int level;
 
+    // Reference to our healthBar;
+    public HealthBar healthBar;
+
+    void Start()
+    {
+        healthBar.SetMaxHealth(MaxHealth);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -25,6 +33,8 @@ public class PlayerStats : Stats
         // Modify health
         ModifyStat("health", - dmg);
         Debug.Log(gameObject.tag + " Health: " + Health);
+
+        healthBar.SetHealth(Health);
 
         // Check if we died
         if (Health <= 0f)

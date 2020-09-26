@@ -280,7 +280,6 @@ public class EnemyAI : MonoBehaviour
                 }
             }     
         }
-
         return direction;
     }
 

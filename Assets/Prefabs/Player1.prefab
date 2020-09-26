@@ -354,6 +354,7 @@ MonoBehaviour:
   baseSpeed: 12
   baseRange: 0.4
   baseAttackSpeed: 2
+  healthBar: {fileID: 0}
 --- !u!1 &6099718782151322857
 GameObject:
   m_ObjectHideFlags: 0
