@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174524903}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.217, y: -0.029, z: 0}
+  m_LocalPosition: {x: 0.174, y: -0.029, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7907783177288663369}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01ae1e69419aad43871644afef1212c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 400
+  m_JumpForce: 350
   m_CrouchSpeed: 1
   m_MovementSmoothing: 0.05
   m_AirControl: 1
@@ -237,6 +237,8 @@ MonoBehaviour:
   baseRange: 0.3
   baseAttackSpeed: 1.5
   detectDistance: 1.9
+  loots:
+  - {fileID: 8406018951588883941, guid: 7637082514cee1b4d97e1ece5c0f3e7e, type: 3}
 --- !u!114 &7907783177288663479
 MonoBehaviour:
   m_ObjectHideFlags: 0

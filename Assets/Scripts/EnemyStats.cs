@@ -6,6 +6,8 @@ public class EnemyStats : Stats
 {
     public float detectDistance;
 
+    public List<GameObject> loots;
+
     void Start()
     {
         // Dissapear on height coroutine
@@ -18,7 +20,7 @@ public class EnemyStats : Stats
         animation.SetTrigger("Hit");
 
         // Defense logic
-        float dmg = damage - (Defense * damage / 100);
+        float dmg = damage - ((Defense + Random.Range(0, 2)) * damage / 100);
 
         // Modify health
         ModifyStat("health", -dmg);
@@ -33,6 +35,11 @@ public class EnemyStats : Stats
     {
         // Perform Death animation
         animation.SetBool("Dead", true);
+
+        if (Random.value > 0.5)
+            GenerateObject(transform.position.x,
+                           transform.position.y + GetComponent<Renderer>().bounds.size.y / 2,
+                           Random.Range(1, 3));
 
         // Avoid moving and attacking when dies
         GetComponent<EnemyAI>().XMovement = 0;
@@ -54,6 +61,14 @@ public class EnemyStats : Stats
                 Destroy(gameObject);
 
             yield return new WaitForSeconds(1);
+        }
+    }
+
+    private void GenerateObject(float x, float y, int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            Instantiate(loots[Random.Range(0, loots.Count)], new Vector3(x, y, 0), Quaternion.identity);
         }
     }
 }

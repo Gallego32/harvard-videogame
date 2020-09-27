@@ -238,7 +238,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     // Attack will be performed in an animation Event
-    void Attack()
+    public void Attack()
     {
         // We get an array of collided objects depending of the selected "canAttack" layer
         Collider2D[] hit = Physics2D.OverlapCircleAll(attackCenter.position, stats.Range, canAttack);

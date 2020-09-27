@@ -37,7 +37,7 @@ public class PlayerStats : Stats
         animation.SetTrigger("Hit");
 
         // Defense logic
-        float dmg = damage - (Defense * damage / 100);
+        float dmg = damage - ((Defense + Random.Range(0, 10)) * damage / 100);
 
         // Modify health
         ModifyStat("health", - dmg);
@@ -84,5 +84,11 @@ public class PlayerStats : Stats
 
             yield return new WaitForSeconds(1);
         }
+    }
+
+    public void pickHeart(float life)
+    {
+        Health = Mathf.Min(MaxHealth, Health + life);
+        healthBar.SetHealth(Health);
     }
 }
