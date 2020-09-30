@@ -66,9 +66,17 @@ public class EnemyStats : Stats
 
     private void GenerateObject(float x, float y, int amount)
     {
+        float actualX = x;
+
         for (int i = 0; i < amount; i++)
         {
-            Instantiate(loots[Random.Range(0, loots.Count)], new Vector3(x, y, 0), Quaternion.identity);
+            Instantiate(loots[Random.Range(0, loots.Count)], new Vector3(actualX, y, 0), Quaternion.identity);
+
+            if (i % 2 == 0)
+                actualX = x + (i + 1) * 0.1f;
+            else
+                actualX = x - (i + 1) * 0.1f;
+                
         }
     }
 }
