@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : Stats
 {
@@ -13,12 +14,18 @@ public class PlayerStats : Stats
     // Keeps track of which player we are
     private int player;
 
+    // Coin UI
+    private CoinText coinText;
+
     void Start()
     {
         healthBar.SetMaxHealth(MaxHealth);
 
         // Check whether we are player 1 or 2
         player = gameObject.tag == "Player1" ? 1 : 2;
+
+        // Get the Coin Text element
+        coinText = GameObject.Find("CoinText").GetComponent<CoinText>();
 
         // Dissapear on height coroutine
         StartCoroutine(Disappear());
@@ -86,9 +93,16 @@ public class PlayerStats : Stats
         }
     }
 
+    // Heal our player if we pick a heart
     public void pickHeart(float life)
     {
         Health = Mathf.Min(MaxHealth, Health + life);
         healthBar.SetHealth(Health);
     }
+
+    public void pickCoin(float coins)
+    {
+        coinText.setCoins(coins);
+    }
+
 }
