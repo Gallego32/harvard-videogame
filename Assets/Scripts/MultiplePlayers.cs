@@ -10,6 +10,10 @@ public class MultiplePlayers : MonoBehaviour
 
     public Vector3 offset;
 
+    private Vector3 speed;
+
+    public float smoothTime = .5f;
+
     void Start()
     {
     }
@@ -19,7 +23,7 @@ public class MultiplePlayers : MonoBehaviour
     {
         Vector3 centerPoint = CenterPoint();
 
-        transform.position = centerPoint + offset;
+        transform.position = Vector3.SmoothDamp(transform.position, centerPoint + offset, ref speed, smoothTime);
     }
 
     Vector3 CenterPoint()
