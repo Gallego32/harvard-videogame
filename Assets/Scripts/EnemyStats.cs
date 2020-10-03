@@ -4,12 +4,26 @@ using UnityEngine;
 
 public class EnemyStats : Stats
 {
+    // Detect the player at this distance
     public float detectDistance;
 
+    // Items to drop when the enemy dies
     public List<GameObject> loots;
+
+    // Control EnemyAI
+    private EnemyAI AI;
+
+    // Bool control for enemy death
+    private bool dead;
 
     void Start()
     {
+        // Enemy starts alive
+        dead = false;
+
+        // Get EnemyAI script
+        AI = GetComponent<EnemyAI>();
+
         // Dissapear on height coroutine
         StartCoroutine(Disappear());
     }
@@ -27,8 +41,14 @@ public class EnemyStats : Stats
         Debug.Log(gameObject.tag + " Health: " + Health);
 
         // Check if we died
-        if (Health <= 0f)
+        if (Health <= 0f && !dead)
+        {
+            // Avoid Hit and loot bugs
+            dead = true;
+
+            // Make a Coroutine for death, wait before removing object
             StartCoroutine(Die());
+        }
     }
 
     IEnumerator Die()
@@ -36,14 +56,19 @@ public class EnemyStats : Stats
         // Perform Death animation
         animation.SetBool("Dead", true);
 
-        if (Random.value > 0.5)
+        // Avoid moving
+        GetComponent<Rigidbody2D>().sharedMaterial = AI.friction;
+        GetComponent<CircleCollider2D>().sharedMaterial = AI.friction;
+
+        // Avoid moving and attacking when dies
+        AI.XMovement = 0;
+        AI.enabled = false;
+        enabled = false;
+
+        if (Random.value > 0.25)
             GenerateObject(transform.position.x,
                            transform.position.y + GetComponent<Renderer>().bounds.size.y / 2,
                            Random.Range(1, 3));
-
-        // Avoid moving and attacking when dies
-        GetComponent<EnemyAI>().XMovement = 0;
-        GetComponent<EnemyAI>().enabled = false;
 
         // Wait some time before removing entity
         yield return new WaitForSeconds(1f);

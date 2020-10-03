@@ -141,7 +141,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 1335
+    m_Bits: 1079
   m_GroundCheck: {fileID: 7907783178248383753}
   m_CeilingCheck: {fileID: 7907783177514156602}
   m_CrouchDisableCollider: {fileID: 0}
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8332644d0809d5444988b378fa9bc29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMaxHealth: 100
+  baseMaxHealth: 80
   baseAttack: 23
   baseDefense: 11
   baseSpeed: 5.5
@@ -239,6 +239,11 @@ MonoBehaviour:
   detectDistance: 1.9
   loots:
   - {fileID: 8406018951588883941, guid: 7637082514cee1b4d97e1ece5c0f3e7e, type: 3}
+  - {fileID: 4324174504418366173, guid: 3768f22cbf278a4428e3650dbd3b7abc, type: 3}
+  - {fileID: 2726245308713289846, guid: 58ce794a5b0aade448390ccd682b7925, type: 3}
+  - {fileID: 2115276903811470465, guid: a31883d5432962c45a2f54ed951cfc96, type: 3}
+  - {fileID: 7328005090258049228, guid: e3861aaec2f87aa44a6038570abb846e, type: 3}
+  - {fileID: 2937502682205200053, guid: 60575ee7ecb237541bbf1d73730fdcd4, type: 3}
 --- !u!114 &7907783177288663479
 MonoBehaviour:
   m_ObjectHideFlags: 0

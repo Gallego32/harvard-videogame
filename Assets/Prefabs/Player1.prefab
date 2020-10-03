@@ -334,7 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAttack:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 512
   attackCenter: {fileID: 2806916696358864865}
 --- !u!114 &8237829425182937787
 MonoBehaviour:
