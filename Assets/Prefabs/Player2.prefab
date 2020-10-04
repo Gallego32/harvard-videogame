@@ -112,7 +112,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 1335
+    m_Bits: 1079
   m_GroundCheck: {fileID: 1863259120892737258}
   m_CeilingCheck: {fileID: 1863259120911858648}
   m_CrouchDisableCollider: {fileID: 0}
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAttack:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 512
   attackCenter: {fileID: 1863259120896929774}
 --- !u!114 &1807527524
 MonoBehaviour:
