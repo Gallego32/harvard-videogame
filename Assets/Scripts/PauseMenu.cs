@@ -42,4 +42,9 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void Reset()
+    {
+        Resume();
+        SceneManager.LoadScene("Play - copia");
+    }
 }
