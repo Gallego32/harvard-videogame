@@ -78,8 +78,8 @@ public class LevelGenerator : MonoBehaviour
                 if (isTop(i, j) && !foundTop)
                 {
                     // Generate ENEMIES
-                    if (Random.value > 0.95)
-                       generateObject(enemies[Random.Range(0, enemies.Count)], (i + offset.x) * 0.159f, 1, GameObject.Find("EnemiesParent"));
+                    if (Random.value > 0.95 && i > 25)
+                       generateObject(enemies[Random.Range(0, enemies.Count)], (i + offset.x) * 0.159f, 0, GameObject.Find("EnemiesParent"));
 
                     // Generate PROPS
                     if (Random.value > 0.85)
@@ -170,19 +170,19 @@ public class LevelGenerator : MonoBehaviour
             } 
             
             // Gap behaviour
-            if (!gap)
+            if (!gap && i > 7)
                 gap = Random.value > gapProbability ? true : false;
 
-            if (gap && gapWidth == 0)
+            if (gap && gapWidth == 0 && i > 7)
                 gapWidth = Random.Range(2, 4);
 
 
             // TopCut change
-            if (Random.value > 0.7)
+            if (Random.value > 0.7 && i > 7)
                 topCut = Mathf.Clamp(topCut + Random.Range(-3, 3), 0, size.y / 3);
 
             // BottomCut change
-            if (Random.value > 0.7)
+            if (Random.value > 0.7 && i > 7)
                 bottomCut = Mathf.Clamp(bottomCut + Random.Range(-3, 3), size.y - size.y / 3, size.y - 1);
         }      
     }

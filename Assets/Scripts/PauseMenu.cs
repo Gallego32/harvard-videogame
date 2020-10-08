@@ -11,6 +11,15 @@ public class PauseMenu : MonoBehaviour
     // Set active if we are paused
     public GameObject pauseMenu;
 
+    // Manage Animation
+    private Animator animation;
+
+    void Start()
+    {
+        // Get Animator component
+        animation = pauseMenu.GetComponent<Animator>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -21,11 +30,28 @@ public class PauseMenu : MonoBehaviour
                 Pause();     
     }
     
+    public IEnumerator Faint()
+    {
+        // Start Faint animation
+        animation.SetTrigger("Faint");
+        
+        Paused = false;
+        Time.timeScale = 1f;
+
+        // Wait until animation gets updated
+        yield return Time.deltaTime;
+
+        // Get animation info for getting animation lenght
+        AnimatorClipInfo[] m_CurrentClipInfo = animation.GetCurrentAnimatorClipInfo(0);
+
+        // Wait for the exact time of the animation
+        yield return new WaitForSeconds(m_CurrentClipInfo[0].clip.length);
+        pauseMenu.SetActive(false);
+    }
+
     public void Resume()
     {
-        Paused = false;
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
+        StartCoroutine(Faint());
     }
 
     void Pause()
