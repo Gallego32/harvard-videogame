@@ -14,14 +14,18 @@ public class LoadGame : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
 
+    public GameObject player2HealthBar;
+
     public LevelGenerator game;
 
     // Start is called before the first frame update
     void Start()
     {
         if (players == 1)
+        {
             player2.SetActive(false);
-
+            player2HealthBar.SetActive(false);
+        }
         // Spawn Players
         Spawn();
     }

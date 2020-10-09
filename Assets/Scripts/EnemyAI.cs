@@ -169,6 +169,7 @@ public class EnemyAI : MonoBehaviour
             // Attack and chasing after logic
             if (foundPlayer)
             {
+                // We want to know which is the closest player
                 float direction = closestPlayer(playersPosition);
                 xMovement = speed * direction;
 
@@ -182,8 +183,6 @@ public class EnemyAI : MonoBehaviour
                         xMovement = 0;
                 }
 
-                
-                
                 if (xMovement == 0)
                 {
                     // Perform Attack animation
@@ -205,7 +204,7 @@ public class EnemyAI : MonoBehaviour
     {
         while (true)
         {
-            if (foundPlayer && Mathf.Abs(xMovement) > 0)
+            if (foundPlayer && Mathf.Abs(xMovement) > 0 && controller.m_Grounded)
             {
                 Collider2D[] hit = Physics2D.OverlapCircleAll(attackCenter.position, stats.Range / 2, shouldJump);
 
@@ -221,7 +220,7 @@ public class EnemyAI : MonoBehaviour
     {
         while (true)
         {
-            if (foundPlayer && Mathf.Abs(xMovement) > 0)
+            if (foundPlayer && Mathf.Abs(xMovement) > 0 && controller.m_Grounded)
             {
                 Collider2D[] hit = Physics2D.OverlapCircleAll(holeDetector.position, 0.05f, shouldJump);
                 // No estoy del todo seguro
