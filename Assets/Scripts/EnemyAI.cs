@@ -89,6 +89,14 @@ public class EnemyAI : MonoBehaviour
         // Movement animation logic
         animation.SetFloat("Speed", Mathf.Abs(xMovement));
 
+        if (!foundPlayer)
+        {
+            // If the enemy is going to fall change direction
+            Collider2D[] hit = Physics2D.OverlapCircleAll(holeDetector.position, 0.05f, shouldJump);
+            if (hit.Length == 0)
+                xMovement *= -1;
+        }
+
     }
 
     void FixedUpdate()
@@ -140,6 +148,8 @@ public class EnemyAI : MonoBehaviour
             {
                 float direction = Random.value > 0.5 ? 1 : -1;
                 xMovement = (speed / 2) * direction;
+
+                
 
                 yield return new WaitForSeconds(Random.Range(0.5f, 0.7f));
 

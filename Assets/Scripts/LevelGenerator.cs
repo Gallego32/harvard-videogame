@@ -6,9 +6,16 @@ using System.Linq;
 
 public class LevelGenerator : MonoBehaviour
 {
+    // Size and position (offset) of the level
     public Vector2Int size;
     public Vector2Int offset;
 
+    Vector3Int[] positions;
+
+    // We'll use this array for removing tiles when we reset or change level
+    TileBase[] nullArray;
+
+    //      All tiles used in level generation
     public int levelStyle;
     public List<TileBase> topperTiles;
     public List<TileBase> fillTiles;
@@ -23,6 +30,7 @@ public class LevelGenerator : MonoBehaviour
     public List<TileBase> rightSide;
     public List<TileBase> downSide;
 
+    // Enemies
     public List<GameObject> enemies;
 
     // Props spawn objects
@@ -43,13 +51,19 @@ public class LevelGenerator : MonoBehaviour
         foreground = GameObject.Find("Foreground").GetComponent<Tilemap>();
         background = GameObject.Find("Background").GetComponent<Tilemap>();
 
+        // Increment Level size
+        size.x += LoadGame.level * 20;
+        // Randomize y size
+        size.y = Random.Range(15, 45);
+
         // Create positions for Ground and BackGround
-        Vector3Int[] positions = new Vector3Int[size.x * size.y];
+        positions = new Vector3Int[size.x * size.y];
         Vector3Int[] backPositions = new Vector3Int[size.x * size.y];
         
         // Create TileBae arrays for Ground and BackGround
         TileBase[] tileArray = new TileBase[positions.Length];
         TileBase[] backTileArray = new TileBase[positions.Length];
+        nullArray = new TileBase[positions.Length];
 
         // Initialize array
         mapArray = new bool[size.x, size.y];
@@ -60,6 +74,8 @@ public class LevelGenerator : MonoBehaviour
         props[0] = basicProps;
         props[1] = darkProps;
         props[2] = purpleProps;
+
+        levelStyle = Random.Range(0, 3);
 
         int k = 0;
         for (int i = 0; i < size.x; i++)
@@ -79,7 +95,7 @@ public class LevelGenerator : MonoBehaviour
                 {
                     // Generate ENEMIES
                     if (Random.value > 0.95 && i > 25)
-                       generateObject(enemies[Random.Range(0, enemies.Count)], (i + offset.x) * 0.159f, 0, GameObject.Find("EnemiesParent"));
+                       generateObject(enemies[Random.Range(0, enemies.Count)], (i + offset.x) * 0.159f, offset.y + 2, GameObject.Find("EnemiesParent"));
 
                     // Generate PROPS
                     if (Random.value > 0.85)
@@ -131,6 +147,7 @@ public class LevelGenerator : MonoBehaviour
                 // Setting tileArrays
                 tileArray[k] = mapArray[i, j] ? tile : null;
                 backTileArray[k] = background;
+                nullArray[k] = null;
             }
         }
 
@@ -249,8 +266,27 @@ public class LevelGenerator : MonoBehaviour
         {
             ClearChildren(GameObject.Find("PropsParent"));
             ClearChildren(GameObject.Find("EnemiesParent"));
+            baseMap.SetTiles(positions, nullArray);
+            //baseMap.ClearAllTiles();
             Start();
         }
+    }
+
+    public void NextLevel()
+    {   
+        // Clear level
+        // Delete every enemy and prop
+        ClearChildren(GameObject.Find("PropsParent"));
+        ClearChildren(GameObject.Find("EnemiesParent"));
+
+        // Clear tiles from last level
+        baseMap.SetTiles(positions, nullArray);
+
+        // Increment level
+        LoadGame.level++;
+
+        // Generate new level
+        Start();
     }
 
     // Function used to destroy children objects from EnemiesParent and PropsParent
