@@ -71,6 +71,7 @@
     <Compile Include="Assets\Packs\Bandits - Pixel Art\Demo\Bandit.cs" />
     <Compile Include="Assets\Scripts\BaseStats0.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\GameOverMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\MultiplePlayers.cs" />
@@ -79,7 +80,7 @@
     <Compile Include="Assets\Scripts\CoinText.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\LevelGenerator.cs" />
-    <Compile Include="Assets\Scripts\GameOverMenu.cs" />
+    <Compile Include="Assets\Scripts\LevelText.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

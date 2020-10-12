@@ -33,7 +33,7 @@ public class EnemyAI : MonoBehaviour
     public LayerMask shouldJump;
 
     // Movement variables
-    private float xMovement = 0f;
+    private float xMovement;
     
     public float XMovement
     {
@@ -41,12 +41,12 @@ public class EnemyAI : MonoBehaviour
         set { this.xMovement = value; }
     }
 
-    private bool jump = false;
+    private bool jump;
     private float speed;
     private float detectDistance;
 
     // Players position
-    public List<Transform> playersPosition;
+    private List<Transform> playersPosition;
 
     // Keeps track of when the enemy has to follow the player
     private bool foundPlayer = false;
@@ -68,6 +68,11 @@ public class EnemyAI : MonoBehaviour
 
         speed = stats.Speed;
         detectDistance = stats.detectDistance;
+
+        xMovement = 0f;
+        jump = false;
+
+        SetPlayers();
 
         // StartCoroutine of AI RandomMovement
         // This will only perform when the enemy hasn't found the Player
@@ -142,6 +147,10 @@ public class EnemyAI : MonoBehaviour
     // The enemy will walk to a random direction for a random time
     IEnumerator RandomMovement()
     {
+        xMovement = 0f;
+
+        yield return Time.deltaTime;
+
         while (true)
         {
             if (!foundPlayer)
@@ -303,6 +312,22 @@ public class EnemyAI : MonoBehaviour
                 hitList.Add(hit[i].gameObject);
         }
         return hitList;
+    }
+
+    // Find our players
+    private void SetPlayers()
+    {
+        playersPosition = new List<Transform>();
+
+        GameObject temp = GameObject.FindGameObjectWithTag("Player1");
+
+        if (temp)
+            playersPosition.Add(temp.transform);
+
+        temp = GameObject.FindGameObjectWithTag("Player2");
+
+        if (temp)
+            playersPosition.Add(temp.transform);
     }
 
     /*      DEBUG FUNCTION */

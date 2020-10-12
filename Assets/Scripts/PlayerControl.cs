@@ -88,7 +88,8 @@ public class PlayerControl : MonoBehaviour
     public void ceilingCollision() {
         //Debug.Log("Techo");
         // Change animation to falling
-        animation.SetBool("Falling", true);
+        if (!controller.m_Grounded)
+            animation.SetBool("Falling", true);
     }
 
     void FixedUpdate() 
