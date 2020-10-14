@@ -6,17 +6,25 @@ using UnityEngine.UIElements;
 public class ScrollingBackground : MonoBehaviour
 {
     public GameObject cam;
-    private float x;
+
+    public float speed;
+    private float length, startPosition;
+    public int width;
 
     // Start is called before the first frame update
     void Start()
     {
-        x = cam.transform.position.x;
+        //length = GetComponent<RectTransform>().sizeDelta.x;
+        startPosition = transform.position.x;
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
-        transform.position = new Vector3(x, transform.position.y, transform.position.z);
+        // Background Movement
+        transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
+
+        if (transform.position.x - startPosition > width)
+            transform.position = new Vector3(transform.position.x - width, transform.position.y, transform.position.z);
     }
 }

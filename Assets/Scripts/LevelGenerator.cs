@@ -39,6 +39,9 @@ public class LevelGenerator : MonoBehaviour
     public List<GameObject> darkProps;
     public List<GameObject> purpleProps;
 
+    // Items
+    public List<GameObject> items;
+
     private Tilemap baseMap, foreground, background;
 
     private bool[,] mapArray;
@@ -107,6 +110,19 @@ public class LevelGenerator : MonoBehaviour
 
                         if (hasEmptySpace(i, j, (int)Mathf.Ceil(propWidth / 0.159f)))
                             generateObject(prop, (i + offset.x) * 0.159f + propWidth / 2, (offset.y - j + 1) * 0.159f + propHeight / 2, GameObject.Find("PropsParent"));
+                    }
+
+                    // Generate ITEMS
+                    if (Random.value > 0.95 && i > 25)
+                    {
+                        GameObject item = items[Random.Range(0, items.Count)];
+                     
+                        float propWidth = item.GetComponent<Renderer>().bounds.size.x;
+                        float propHeight = item.GetComponent<Renderer>().bounds.size.y;
+
+
+                        generateObject(item, (i + offset.x) * 0.159f + propWidth, (offset.y - j + 2) * 0.159f + propHeight, GameObject.Find("PropsParent"));
+                        
                     }
 
                     if (isLeftSide(i, j))
