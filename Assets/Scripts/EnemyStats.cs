@@ -95,8 +95,12 @@ public class EnemyStats : Stats
 
         for (int i = 0; i < amount; i++)
         {
-            Instantiate(loots[Random.Range(0, loots.Count)], new Vector3(actualX, y, 0), Quaternion.identity);
+            GameObject item = loots[Random.Range(0, loots.Count)];
+            item.GetComponent<ItemMovement>().despawn = true;
 
+            Instantiate(item, new Vector3(actualX, y, 0), Quaternion.identity);
+
+            // This way all the items won't be placed in the same position
             if (i % 2 == 0)
                 actualX = x + (i + 1) * 0.1f;
             else

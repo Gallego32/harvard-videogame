@@ -7,11 +7,6 @@ public class Heart : MonoBehaviour
     // How many health do we want
     public float life;
 
-    void Start() 
-    {
-        StartCoroutine(Despawn());
-    }
-
     // Trigger Pick Heart function
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -22,9 +17,4 @@ public class Heart : MonoBehaviour
         }
     }
 
-    private IEnumerator Despawn()
-    {
-        yield return new WaitForSeconds(20);
-        Destroy(gameObject);
-    }
 }

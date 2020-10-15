@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
+    <Compile Include="Assets\Scripts\LevelText.cs" />
     <Compile Include="Assets\Packs\Bandits - Pixel Art\Demo\Bandit.cs" />
     <Compile Include="Assets\Scripts\BaseStats0.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
@@ -80,7 +81,7 @@
     <Compile Include="Assets\Scripts\CoinText.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\LevelGenerator.cs" />
-    <Compile Include="Assets\Scripts\LevelText.cs" />
+    <Compile Include="Assets\Scripts\ScrollingPlayState.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

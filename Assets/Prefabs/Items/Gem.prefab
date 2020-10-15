@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amplitude: 0.11
   speed: 1
+  despawn: 0
+  despawnTime: 20
 --- !u!61 &7328005090258049233
 BoxCollider2D:
   m_ObjectHideFlags: 0
