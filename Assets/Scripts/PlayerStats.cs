@@ -62,10 +62,14 @@ public class PlayerStats : Stats
         // Perform Death animation
         animation.SetBool("Dead", true);
 
-        // Set the player control not enabled after dying
+        PlayerControl PC = GetComponent<PlayerControl>();
 
-        GetComponent<PlayerControl>().enabled = false;
-        GetComponent<CharacterController2D>().enabled = false;
+        // Avoid moving
+        GetComponent<Rigidbody2D>().sharedMaterial = PC.friction;
+        GetComponent<CircleCollider2D>().sharedMaterial = PC.friction;
+
+        // Set the player control not enabled after dying
+        PC.enabled = false;
         GetComponent<AttackControl>().enabled = false;
         GetComponent<ClampPosition>().enabled = false;
 

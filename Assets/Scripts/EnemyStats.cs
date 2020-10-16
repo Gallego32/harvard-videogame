@@ -74,7 +74,6 @@ public class EnemyStats : Stats
         yield return new WaitForSeconds(1f);
 
         Debug.Log("Die " + gameObject.tag);
-
         Destroy(gameObject);
     }
 

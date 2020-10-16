@@ -206,7 +206,13 @@ public class EnemyAI : MonoBehaviour
                 {
                     // Perform Attack animation
                     animation.SetTrigger("Attack");
+                    // Flip the Enemy if the player is behind
+                    
                     yield return new WaitForSeconds(1f / stats.AttackSpeed);
+
+                    if (direction == -1 && controller.LookingRight() || direction == 1 && !controller.LookingRight())
+                        controller.Flip();
+
                 }   else 
                 {
                         /*if (Mathf.Abs(rb.velocity.x) <= 0.5f)

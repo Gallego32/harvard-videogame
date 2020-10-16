@@ -97,7 +97,7 @@ public class LevelGenerator : MonoBehaviour
                 if (isTop(i, j) && !foundTop)
                 {
                     // Generate ENEMIES
-                    if (Random.value > 0.95 && i > 25)
+                    if (Random.value > 0.96 && i > 25)
                        generateObject(enemies[Random.Range(0, enemies.Count)], (i + offset.x) * 0.159f, offset.y + 2, GameObject.Find("EnemiesParent"));
 
                     // Generate PROPS

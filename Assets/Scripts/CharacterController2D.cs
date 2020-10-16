@@ -76,6 +76,10 @@ public class CharacterController2D : MonoBehaviour
 
 	}
 
+	public bool LookingRight()
+	{
+		return this.m_FacingRight;
+	}
 
 	public void Move(float move, bool crouch, bool jump)
 	{
@@ -149,7 +153,7 @@ public class CharacterController2D : MonoBehaviour
 	}
 
 
-	private void Flip()
+	public void Flip()
 	{
 		// Switch the way the player is labelled as facing.
 		m_FacingRight = !m_FacingRight;
