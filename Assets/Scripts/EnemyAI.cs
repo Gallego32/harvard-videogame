@@ -337,6 +337,7 @@ public class EnemyAI : MonoBehaviour
             return;
 
 		Gizmos.DrawWireSphere(holeDetector.position, 0.05f);
+        Gizmos.DrawWireSphere(attackCenter.position, 0.4f);
         //Gizmos.DrawWireSphere(new Vector3(holeDetector.position.x + .15f, holeDetector.position.y - .1f, 0), 0.05f);
 	}
 }
