@@ -12,6 +12,7 @@ public class Heart : MonoBehaviour
     {
         if (other.gameObject.layer == 8 && other.GetType() == typeof(BoxCollider2D))
         {
+            FindObjectOfType<AudioManager>().Play("Item");
             other.GetComponent<PlayerStats>().pickHeart(life);
             Destroy(gameObject);
         }

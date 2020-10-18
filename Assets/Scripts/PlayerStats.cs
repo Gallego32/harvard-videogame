@@ -17,6 +17,9 @@ public class PlayerStats : Stats
     // Coin UI
     private CoinText coinText;
 
+    // Avoiding dead bugs
+    private bool dead = false;
+
     void Start()
     {
         healthBar.SetMaxHealth(MaxHealth);
@@ -40,27 +43,41 @@ public class PlayerStats : Stats
 
     public void Hit(float damage)
     {
-        // Perform Hit animation
-        animation.SetTrigger("Hit");
+        if (!dead)
+        {
+            // Perform Hit animation
+            animation.SetTrigger("Hit");
 
-        // Defense logic
-        float dmg = damage - ((Defense + Random.Range(0, 10)) * damage / 100);
+            // Defense logic
+            float dmg = damage - ((Defense + Random.Range(0, 10)) * damage / 100);
 
-        // Modify health
-        ModifyStat("health", - dmg);
-        Debug.Log(gameObject.tag + " Health: " + Health);
+            // Modify health
+            ModifyStat("health", - dmg);
+            Debug.Log(gameObject.tag + " Health: " + Health);
 
-        healthBar.SetHealth(Health);
+            healthBar.SetHealth(Health);
 
-        // Check if we died
-        if (Health <= 0f)
-            StartCoroutine(Die()); 
+            // Check if we died
+            if (Health <= 0f && !dead)
+            {
+                // Avoid Hit and loot bugs
+                dead = true;
+
+                // Make a Coroutine for death, wait before removing object
+                StartCoroutine(Die());
+            } else
+                // Play Hurt sound
+                FindObjectOfType<AudioManager>().Play("Hurt");
+        }
     }
 
     IEnumerator Die()
     {
         // Perform Death animation
         animation.SetBool("Dead", true);
+
+        // Play Dead sound
+        FindObjectOfType<AudioManager>().Play("Dead");
 
         PlayerControl PC = GetComponent<PlayerControl>();
 

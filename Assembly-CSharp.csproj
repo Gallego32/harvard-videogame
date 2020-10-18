@@ -69,11 +69,14 @@
     <Compile Include="Assets\Scripts\Coin.cs" />
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\LevelText.cs" />
+    <Compile Include="Assets\Scripts\Audio.cs" />
+    <Compile Include="Assets\Scripts\ScrollingPlayState.cs" />
     <Compile Include="Assets\Packs\Bandits - Pixel Art\Demo\Bandit.cs" />
     <Compile Include="Assets\Scripts\BaseStats0.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\GameOverMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
+    <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\MultiplePlayers.cs" />
     <Compile Include="Assets\Scripts\Stats0.cs" />
@@ -81,7 +84,6 @@
     <Compile Include="Assets\Scripts\CoinText.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\LevelGenerator.cs" />
-    <Compile Include="Assets\Scripts\ScrollingPlayState.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -109,7 +111,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-     <None Include="Assets\Fonts\Read me.txt" />
+     <None Include="Assets\Prefabs\Scene\Fonts\Read me.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

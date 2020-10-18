@@ -74,6 +74,9 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetButtonDown("Jump" + player) && transform.position.y < camera.transform.position.y + 1.5f) {
             jump = true;
             animation.SetBool("Jump", true);
+
+            // Play Jump sound
+            //FindObjectOfType<AudioManager>().Play("Jump");
         }            
     }
 

@@ -12,6 +12,7 @@ public class Coin : MonoBehaviour
     {
         if (other.gameObject.layer == 8 && other.GetType() == typeof(BoxCollider2D))
         {
+            FindObjectOfType<AudioManager>().Play("Coin");
             other.GetComponent<PlayerStats>().pickCoin(coins);
             Destroy(gameObject);
         }

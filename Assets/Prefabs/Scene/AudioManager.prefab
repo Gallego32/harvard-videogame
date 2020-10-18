@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2556024573510735888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2556024573510735889}
+  - component: {fileID: 2556024573510735890}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2556024573510735889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556024573510735888}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -929.74554, y: -615.4494, z: 61.494602}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2556024573510735890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556024573510735888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad9858c5ed43094692190035c72349d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios:
+  - name: MenuButton
+    clip: {fileID: 8300000, guid: 377c9511fbfb9f5448e77aae0304c37a, type: 3}
+    volume: 0.62
+    pitch: 1.55
+    source: {fileID: 0}
+  - name: MenuBack
+    clip: {fileID: 8300000, guid: d092b0ac3f41e5f4982ff7887a8bc58f, type: 3}
+    volume: 0.62
+    pitch: 1.55
+    source: {fileID: 0}
+  - name: Pause
+    clip: {fileID: 8300000, guid: 02b9a4af184a38a4baeb47f87f2469ae, type: 3}
+    volume: 0.62
+    pitch: 1.55
+    source: {fileID: 0}
+  - name: Item
+    clip: {fileID: 8300000, guid: 0145745db7fa4f44f86c15c46751c305, type: 3}
+    volume: 0.62
+    pitch: 1.55
+    source: {fileID: 0}
+  - name: Coin
+    clip: {fileID: 8300000, guid: 29792571344a69645905f6e9f3407718, type: 3}
+    volume: 0.37
+    pitch: 1.77
+    source: {fileID: 0}
+  - name: Hurt
+    clip: {fileID: 8300000, guid: 2ce58b262168bee408119d27e8b67afc, type: 3}
+    volume: 0.487
+    pitch: 1.55
+    source: {fileID: 0}
+  - name: EnemyHurt
+    clip: {fileID: 8300000, guid: 5278f66f116c9ee4a8fc1f1fe0abf533, type: 3}
+    volume: 0.487
+    pitch: 1.55
+    source: {fileID: 0}
+  - name: Dead
+    clip: {fileID: 8300000, guid: ace39415fbd41cf43bb7cf36fc687060, type: 3}
+    volume: 0.487
+    pitch: 1.55
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: 07209e14604db0647a06c8f376b3b355, type: 3}
+    volume: 0.04
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: EnemyDead
+    clip: {fileID: 8300000, guid: dc7e5a526e8b4504d9e499dd39cb3ff0, type: 3}
+    volume: 0.61
+    pitch: 1.55
+    source: {fileID: 0}

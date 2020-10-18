@@ -338,9 +338,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1580491343}
-  - {fileID: 682795122}
   - {fileID: 1012784291}
   - {fileID: 551147239}
+  - {fileID: 682795122}
   m_Father: {fileID: 1559109709}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -991,7 +991,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 227134695}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1288,6 +1288,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1395159778}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MenuButton
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &593900222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1512,11 +1524,11 @@ RectTransform:
   m_Children:
   - {fileID: 590479382}
   m_Father: {fileID: 227134695}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 106.1, y: -358}
+  m_AnchoredPosition: {x: 106.099976, y: -358}
   m_SizeDelta: {x: 418.21545, y: 188.30103}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &682795123
@@ -1793,6 +1805,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1395159778}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MenuBack
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &947305131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1861,7 +1885,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 227134695}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2261,6 +2285,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305646873}
   m_CullTransparentMesh: 0
+--- !u!114 &1395159778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2556024573510735890, guid: 8e07258b462539d46bed6839079d770e, type: 3}
+  m_PrefabInstance: {fileID: 2075835481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad9858c5ed43094692190035c72349d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1461189830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2721,6 +2756,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1461189830}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 227134694}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -2733,17 +2780,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1461189830}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1395159778}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
+          m_StringArgument: MenuButton
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1580491345
 MonoBehaviour:
@@ -3025,6 +3072,18 @@ MonoBehaviour:
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1395159778}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MenuButton
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1725742564
@@ -3591,6 +3650,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055005810}
   m_CullTransparentMesh: 0
+--- !u!1001 &2075835481
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2556024573510735888, guid: 8e07258b462539d46bed6839079d770e, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556024573510735889, guid: 8e07258b462539d46bed6839079d770e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -929.74554
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556024573510735889, guid: 8e07258b462539d46bed6839079d770e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -615.4494
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556024573510735889, guid: 8e07258b462539d46bed6839079d770e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 61.494602
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556024573510735889, guid: 8e07258b462539d46bed6839079d770e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556024573510735889, guid: 8e07258b462539d46bed6839079d770e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556024573510735889, guid: 8e07258b462539d46bed6839079d770e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556024573510735889, guid: 8e07258b462539d46bed6839079d770e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556024573510735889, guid: 8e07258b462539d46bed6839079d770e, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556024573510735889, guid: 8e07258b462539d46bed6839079d770e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556024573510735889, guid: 8e07258b462539d46bed6839079d770e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556024573510735889, guid: 8e07258b462539d46bed6839079d770e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e07258b462539d46bed6839079d770e, type: 3}
 --- !u!1 &2077426919
 GameObject:
   m_ObjectHideFlags: 0

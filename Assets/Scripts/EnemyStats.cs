@@ -30,24 +30,30 @@ public class EnemyStats : Stats
 
     public void Hit(float damage)
     {
-        // Perform Hit animation
-        animation.SetTrigger("Hit");
-
-        // Defense logic
-        float dmg = damage - ((Defense + Random.Range(0, 2)) * damage / 100);
-
-        // Modify health
-        ModifyStat("health", -dmg);
-        Debug.Log(gameObject.tag + " Health: " + Health);
-
-        // Check if we died
-        if (Health <= 0f && !dead)
+        if (!dead)
         {
-            // Avoid Hit and loot bugs
-            dead = true;
+            // Perform Hit animation
+            animation.SetTrigger("Hit");
 
-            // Make a Coroutine for death, wait before removing object
-            StartCoroutine(Die());
+            // Play Hurt sound
+            FindObjectOfType<AudioManager>().Play("EnemyHurt");
+
+            // Defense logic
+            float dmg = damage - ((Defense + Random.Range(0, 2)) * damage / 100);
+
+            // Modify health
+            ModifyStat("health", -dmg);
+            Debug.Log(gameObject.tag + " Health: " + Health);
+
+            // Check if we died
+            if (Health <= 0f && !dead)
+            {
+                // Avoid Hit and loot bugs
+                dead = true;
+
+                // Make a Coroutine for death, wait before removing object
+                StartCoroutine(Die());
+            }
         }
     }
 
@@ -55,6 +61,9 @@ public class EnemyStats : Stats
     {
         // Perform Death animation
         animation.SetBool("Dead", true);
+
+        // Play Hurt sound
+        FindObjectOfType<AudioManager>().Play("EnemyDead");
 
         // Avoid moving
         GetComponent<Rigidbody2D>().sharedMaterial = AI.friction;
