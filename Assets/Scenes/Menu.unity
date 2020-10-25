@@ -1206,6 +1206,7 @@ GameObject:
   - component: {fileID: 593900223}
   - component: {fileID: 593900222}
   - component: {fileID: 593900221}
+  - component: {fileID: 593900224}
   m_Layer: 5
   m_Name: 2Player
   m_TagString: Untagged
@@ -1288,18 +1289,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1395159778}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: MenuButton
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &593900222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,6 +1327,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593900219}
   m_CullTransparentMesh: 0
+--- !u!114 &593900224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593900219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee46d352672a954684d1f94634b8304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: MenuButton
 --- !u!1 &636458867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,6 +1713,7 @@ GameObject:
   - component: {fileID: 947305132}
   - component: {fileID: 947305131}
   - component: {fileID: 947305130}
+  - component: {fileID: 947305133}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -1805,18 +1808,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1395159778}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: MenuBack
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!114 &947305131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1855,6 +1846,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947305128}
   m_CullTransparentMesh: 0
+--- !u!114 &947305133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947305128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee46d352672a954684d1f94634b8304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: MenuBack
 --- !u!1 &1012784290
 GameObject:
   m_ObjectHideFlags: 0
@@ -2285,17 +2289,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305646873}
   m_CullTransparentMesh: 0
---- !u!114 &1395159778 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2556024573510735890, guid: 8e07258b462539d46bed6839079d770e, type: 3}
-  m_PrefabInstance: {fileID: 2075835481}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad9858c5ed43094692190035c72349d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1461189830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2686,6 +2679,7 @@ GameObject:
   - component: {fileID: 1580491346}
   - component: {fileID: 1580491345}
   - component: {fileID: 1580491344}
+  - component: {fileID: 1580491347}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -2780,18 +2774,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1395159778}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: MenuButton
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1580491345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2830,6 +2812,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580491342}
   m_CullTransparentMesh: 0
+--- !u!114 &1580491347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580491342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee46d352672a954684d1f94634b8304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: MenuButton
 --- !u!1 &1583110089
 GameObject:
   m_ObjectHideFlags: 0
@@ -2992,6 +2987,7 @@ GameObject:
   - component: {fileID: 1725742565}
   - component: {fileID: 1725742564}
   - component: {fileID: 1725742563}
+  - component: {fileID: 1725742566}
   m_Layer: 5
   m_Name: 1Player
   m_TagString: Untagged
@@ -3074,18 +3070,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1395159778}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: MenuButton
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1725742564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3124,6 +3108,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725742561}
   m_CullTransparentMesh: 0
+--- !u!114 &1725742566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725742561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee46d352672a954684d1f94634b8304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: MenuButton
 --- !u!1 &1851212434
 GameObject:
   m_ObjectHideFlags: 0

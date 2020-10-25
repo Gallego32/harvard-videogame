@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LoadGame : MonoBehaviour
 {
     // How many players
-    public static int players = 2;
+    public static int players = 1;
 
     public static int level = 0;
 
@@ -14,12 +14,16 @@ public class LoadGame : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
 
-    // Contorl camera position
+    // Control camera position
     public Transform camera;
+
+    // Use Fader behaviour
+    public Fader fader;
 
     // Remove second health bar if player2 isn't playing
     public GameObject player2HealthBar;
 
+    // Control Level
     public LevelGenerator game;
 
     // Start is called before the first frame update
@@ -43,11 +47,20 @@ public class LoadGame : MonoBehaviour
         // A cambiar
         if (player1.transform.position.x > (game.offset.x + game.size.x - 10) * 0.159f)
         {
-            // Generate level
-            game.NextLevel();
-            // Spawn players in our spawn point (At the beggining of the level)
-            StartCoroutine(Spawn());
+            
         }
+    }
+
+    public void NextLevel()
+    {
+        // Generate level
+        game.NextLevel();
+
+        // Fade IN and OUT
+        StartCoroutine(fader.FadeFor(0.2f, 5, Fader.initialSpeed));
+
+        // Spawn players in our spawn point (At the beggining of the level)
+        StartCoroutine(Spawn());
     }
 
     /*void Spawn()

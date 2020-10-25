@@ -56,8 +56,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Pause
     clip: {fileID: 8300000, guid: 02b9a4af184a38a4baeb47f87f2469ae, type: 3}
-    volume: 0.62
-    pitch: 1.55
+    volume: 0.8
+    pitch: 1.19
     source: {fileID: 0}
   - name: Item
     clip: {fileID: 8300000, guid: 0145745db7fa4f44f86c15c46751c305, type: 3}
@@ -92,5 +92,10 @@ MonoBehaviour:
   - name: EnemyDead
     clip: {fileID: 8300000, guid: dc7e5a526e8b4504d9e499dd39cb3ff0, type: 3}
     volume: 0.61
+    pitch: 1.55
+    source: {fileID: 0}
+  - name: PauseInverted
+    clip: {fileID: 8300000, guid: b2b55f210d910154fb1b9b4884572eb8, type: 3}
+    volume: 0.8
     pitch: 1.55
     source: {fileID: 0}

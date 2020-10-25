@@ -39,6 +39,8 @@ public class LevelGenerator : MonoBehaviour
     public List<GameObject> darkProps;
     public List<GameObject> purpleProps;
 
+    public GameObject nextLevelPortal;
+
     // Items
     public List<GameObject> items;
 
@@ -120,9 +122,7 @@ public class LevelGenerator : MonoBehaviour
                         float propWidth = item.GetComponent<Renderer>().bounds.size.x;
                         float propHeight = item.GetComponent<Renderer>().bounds.size.y;
 
-
                         generateObject(item, (i + offset.x) * 0.159f + propWidth, (offset.y - j + 2) * 0.159f + propHeight, GameObject.Find("PropsParent"));
-                        
                     }
 
                     if (isLeftSide(i, j))
@@ -160,12 +160,17 @@ public class LevelGenerator : MonoBehaviour
                     background = null;
                 }
         
+                
                 // Setting tileArrays
                 tileArray[k] = mapArray[i, j] ? tile : null;
                 backTileArray[k] = background;
                 nullArray[k] = null;
             }
         }
+
+        // End game generation
+        generateObject(nextLevelPortal, (offset.x + size.x + 5) * 0.159f, (offset.y + 2) * 0.159f, GameObject.Find("PropsParent"));
+
 
         // Setting tiles into the TileMap
         baseMap.SetTiles(positions, tileArray);

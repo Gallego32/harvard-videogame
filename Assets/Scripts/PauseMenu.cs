@@ -51,11 +51,13 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        FindObjectOfType<AudioManager>().Play("PauseInverted");
         StartCoroutine(Faint());
     }
 
     void Pause()
     {
+        FindObjectOfType<AudioManager>().Play("Pause");
         Paused = true;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
@@ -70,7 +72,11 @@ public class PauseMenu : MonoBehaviour
 
     public void Reset()
     {
-        Resume();
+        // Resume behaviour
+        Paused = false;
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
+
         SceneManager.LoadScene("Play - copia");
     }
 }
