@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
     We'll be able to make FADE IN and FADE OUT with this script attached to a PANEL in the canvas
@@ -11,13 +12,16 @@ public class Fader : MonoBehaviour
 {
     private Animator animator;
 
-   public static float initialSpeed;
+    public static float initialSpeed;
+
+    private Image image;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         initialSpeed = animator.speed;
         animator.enabled = false;
+        image = GetComponent<Image>();
     }
     
     public void FadeIn()
@@ -35,6 +39,9 @@ public class Fader : MonoBehaviour
     {
         animator.enabled = false;
         animator.speed = initialSpeed;
+
+        Color transparent = new Color(image.color.r, image.color.g, image.color.b, 0);
+        image.color = transparent;
     }
 
     // Standard fade in and out

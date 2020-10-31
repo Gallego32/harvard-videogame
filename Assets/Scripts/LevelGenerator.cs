@@ -10,6 +10,9 @@ public class LevelGenerator : MonoBehaviour
     public Vector2Int size;
     public Vector2Int offset;
 
+    // Debug option
+    public bool spawnEnemies;
+
     Vector3Int[] positions;
 
     // We'll use this array for removing tiles when we reset or change level
@@ -99,7 +102,7 @@ public class LevelGenerator : MonoBehaviour
                 if (isTop(i, j) && !foundTop)
                 {
                     // Generate ENEMIES
-                    if (Random.value > 0.96 && i > 25)
+                    if (Random.value > 0.96 && i > 25 && spawnEnemies)
                        generateObject(enemies[Random.Range(0, enemies.Count)], (i + offset.x) * 0.159f, offset.y + 2, GameObject.Find("EnemiesParent"));
 
                     // Generate PROPS
@@ -169,7 +172,7 @@ public class LevelGenerator : MonoBehaviour
         }
 
         // End game generation
-        generateObject(nextLevelPortal, (offset.x + size.x + 5) * 0.159f, (offset.y + 2) * 0.159f, GameObject.Find("PropsParent"));
+        generateObject(nextLevelPortal, (offset.x + size.x + 5) * 0.159f, offset.y * 0.159f, GameObject.Find("PropsParent"));
 
 
         // Setting tiles into the TileMap

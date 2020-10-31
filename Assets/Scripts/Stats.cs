@@ -41,7 +41,7 @@ public class Stats : MonoBehaviour
         switch (stat)
         {
             case "health":
-                this.Health = Mathf.Max(0, this.Health + value);
+                this.Health = Mathf.Clamp(this.Health + value, 0, MaxHealth);
                 break;
             case "maxHealth":
                 this.MaxHealth = Mathf.Max(0, this.MaxHealth + value);

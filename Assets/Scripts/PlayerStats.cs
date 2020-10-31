@@ -117,7 +117,7 @@ public class PlayerStats : Stats
     // Heal our player if we pick a heart
     public void pickHeart(float life)
     {
-        Health = Mathf.Min(MaxHealth, Health + life);
+        ModifyStat("health", life);
         healthBar.SetHealth(Health);
     }
 

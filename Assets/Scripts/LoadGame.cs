@@ -43,21 +43,30 @@ public class LoadGame : MonoBehaviour
         // Check if any of our players are alive, else, gameOver Scene
         if (!player1.active && !player2.active)
             SceneManager.LoadScene("Game Over");
-
-        // A cambiar
-        if (player1.transform.position.x > (game.offset.x + game.size.x - 10) * 0.159f)
-        {
-            
-        }
     }
 
     public void NextLevel()
     {
+        // Set health to its max value again
+        PlayerStats playerStats = player1.GetComponent<PlayerStats>();
+        if (player1.active)
+        {
+            playerStats.pickHeart(playerStats.MaxHealth);
+        }
+
+        if (players == 2 && player2.active)
+        {
+            playerStats = player2.GetComponent<PlayerStats>();
+            playerStats.pickHeart(playerStats.MaxHealth);
+        }
+
         // Generate level
         game.NextLevel();
 
         // Fade IN and OUT
         StartCoroutine(fader.FadeFor(0.2f, 5, Fader.initialSpeed));
+
+        FindObjectOfType<AudioManager>().Play("NextLevel");
 
         // Spawn players in our spawn point (At the beggining of the level)
         StartCoroutine(Spawn());
@@ -78,16 +87,30 @@ public class LoadGame : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        // Move camera before player
-        camera.position = new Vector3((game.offset.x + 3.5f) *  0.159f, game.offset.y + 2, 0);
+        // Deactivate ClampPosition script before moving players
+        player1.GetComponent<ClampPosition>().enabled = false;
+        player2.GetComponent<ClampPosition>().enabled = false;
 
-        // Update Camera to avoid bugs with Clamp Position script
-        yield return Time.deltaTime;
-
+        // Wait for a small amount of time
+        yield return Time.fixedDeltaTime;
+        yield return Time.fixedDeltaTime;
+        
+        camera.position = new Vector3((game.offset.x + 3.5f) *  0.159f, game.offset.y + 2, 0);;
+        
         // Move players to our spawn point
         player1.transform.position = new Vector3((game.offset.x + 3.5f) *  0.159f, game.offset.y + 2, 0);
-
+        
+        // Move second player if there are two players
         if (players == 2)
             player2.transform.position = new Vector3((game.offset.x + 6.5f) *  0.159f, game.offset.y + 2, 0);
+
+        // Wait for a small amount of time
+        yield return Time.fixedDeltaTime;
+        yield return Time.fixedDeltaTime;
+
+        // Activate ClampPosition Script again
+        player1.GetComponent<ClampPosition>().enabled = true;
+        player2.GetComponent<ClampPosition>().enabled = true;
+        
     }
 }

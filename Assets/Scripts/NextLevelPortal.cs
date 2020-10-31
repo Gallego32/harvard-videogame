@@ -49,7 +49,7 @@ public class NextLevelPortal : MonoBehaviour
         } else
         {
             if (!returnPlatform)
-                tempPos.y += Time.fixedDeltaTime;
+                tempPos.y += Time.fixedDeltaTime / 1.5f;
             else
             {
                 tempPos.y += Time.fixedDeltaTime * upDown;
@@ -64,8 +64,11 @@ public class NextLevelPortal : MonoBehaviour
         transform.position = tempPos;
         
         if (transform.position.y > posOffset.y + 3)
+        {    
+            // Avoid changing level more than once
+            tempPos = posOffset;
             lg.NextLevel();
-
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -73,14 +76,6 @@ public class NextLevelPortal : MonoBehaviour
         if (other.gameObject.layer == 8 && other.GetType() == typeof(BoxCollider2D))
         {
             onPlatform = true;
-        }
-    }
-
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.layer == 8 && other.GetType() == typeof(BoxCollider2D))
-        {
-            Debug.Log("Jaja soi io");
         }
     }
 
