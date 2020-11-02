@@ -8,7 +8,6 @@ public class LevelText : MonoBehaviour
     // Increment level
     public void IncrementLevelText()
     {
-        //GetComponent<Text>().text = "LEVEL: " + LoadGame.level;
-
+        GetComponent<Text>().text = "LEVEL: " + LoadGame.level;
     }
 }

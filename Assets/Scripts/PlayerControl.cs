@@ -78,6 +78,7 @@ public class PlayerControl : MonoBehaviour
             // Play Jump sound
             //FindObjectOfType<AudioManager>().Play("Jump");
         }            
+        
     }
 
     // Behaviour on landing

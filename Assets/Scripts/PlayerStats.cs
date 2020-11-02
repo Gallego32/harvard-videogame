@@ -20,6 +20,9 @@ public class PlayerStats : Stats
     // Avoiding dead bugs
     private bool dead = false;
 
+    // Avoid reviving bugs
+    public ClampPosition coopClampPosition;
+
     void Start()
     {
         healthBar.SetMaxHealth(MaxHealth);
@@ -29,7 +32,7 @@ public class PlayerStats : Stats
 
         // Get the Coin Text element
         coinText = GameObject.Find("CoinText").GetComponent<CoinText>();
-
+        
         // Dissapear on height coroutine
         StartCoroutine(Disappear());
     }
@@ -39,6 +42,11 @@ public class PlayerStats : Stats
     {
         if (Input.GetKeyDown(KeyCode.Tab))
             StartCoroutine(Die()); 
+        if (Input.GetKeyDown(KeyCode.X) && gameObject.tag == "Player2")
+            ChangeComponentState(true);
+        if (Input.GetKeyDown(KeyCode.Z) && gameObject.tag == "Player2")
+            ChangeComponentState(false);
+
     }
 
     public void Hit(float damage)
@@ -95,8 +103,9 @@ public class PlayerStats : Stats
 
         Debug.Log("Die " + gameObject.tag);
         // SetActive to false to Player object 
-        // * We don't want to destroy the object in the case of the players*
-        GameObject.Find("Player" + player).SetActive(false);
+        // * We don't want to destroy the object in the case of the players *
+        ChangeComponentState(false);
+        gameObject.SetActive(false);
     }
 
     private IEnumerator Disappear()
@@ -105,13 +114,44 @@ public class PlayerStats : Stats
         {
             if (transform.position.y < -10)
             {
-                GameObject.Find("Player" + player).SetActive(false);
+                ChangeComponentState(false);
+                gameObject.SetActive(false);
 
                 healthBar.SetHealth(0);
-            }    
-
+            }   
             yield return new WaitForSeconds(1);
         }
+    }
+
+    private void ChangeComponentState(bool state)
+    {
+        GetComponent<PlayerControl>().enabled = state;
+        GetComponent<AttackControl>().enabled = state;
+        GetComponent<ClampPosition>().enabled = state;
+        //GetComponent<SpriteRenderer>().enabled = state;
+
+        GetComponent<Rigidbody2D>().bodyType = state ? RigidbodyType2D.Dynamic : RigidbodyType2D.Static;
+
+        GetComponent<CircleCollider2D>().enabled = state;
+        GetComponent<BoxCollider2D>().enabled = state;
+
+        if (LoadGame.players == 2)
+            coopClampPosition.enabled = state;
+    }
+
+    public void Regenerate()
+    {
+        Health = MaxHealth;
+        healthBar.SetHealth(Health);
+    }
+
+
+    public void Revive()
+    {
+        ChangeComponentState(true);
+        Regenerate();
+        Start();
+        this.dead = false;
     }
 
     // Heal our player if we pick a heart

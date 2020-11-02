@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class LoadGame : MonoBehaviour
 {
     // How many players
-    public static int players = 1;
+    public static int players = 2;
 
-    public static int level = 0;
+    // Level control
+    public static int level = 1;
+    public LevelText levelText;
 
     // Control both players
     public GameObject player1;
@@ -47,21 +49,9 @@ public class LoadGame : MonoBehaviour
 
     public void NextLevel()
     {
-        // Set health to its max value again
-        PlayerStats playerStats = player1.GetComponent<PlayerStats>();
-        if (player1.active)
-        {
-            playerStats.pickHeart(playerStats.MaxHealth);
-        }
-
-        if (players == 2 && player2.active)
-        {
-            playerStats = player2.GetComponent<PlayerStats>();
-            playerStats.pickHeart(playerStats.MaxHealth);
-        }
-
         // Generate level
         game.NextLevel();
+        levelText.IncrementLevelText();
 
         // Fade IN and OUT
         StartCoroutine(fader.FadeFor(0.2f, 5, Fader.initialSpeed));
@@ -70,20 +60,9 @@ public class LoadGame : MonoBehaviour
 
         // Spawn players in our spawn point (At the beggining of the level)
         StartCoroutine(Spawn());
+
+        RegeneratePlayers();
     }
-
-    /*void Spawn()
-    {
-        //camera.position = new Vector3((game.offset.x + 3.5f) *  0.159f, game.offset.y + 2, 0);
-        //No funciona player1.GetComponent<ClampPosition>().enabled = false;
-
-        player1.transform.position = new Vector3((game.offset.x + 3.5f) *  0.159f, game.offset.y + 2, 0);
-
-        //player1.GetComponent<ClampPosition>().enabled = true;
-
-        if (players == 2)
-            player2.transform.position = new Vector3((game.offset.x + 6.5f) *  0.159f, game.offset.y + 2, 0);
-    }*/
 
     IEnumerator Spawn()
     {
@@ -95,6 +74,7 @@ public class LoadGame : MonoBehaviour
         yield return Time.fixedDeltaTime;
         yield return Time.fixedDeltaTime;
         
+        // Move camera before anything else
         camera.position = new Vector3((game.offset.x + 3.5f) *  0.159f, game.offset.y + 2, 0);;
         
         // Move players to our spawn point
@@ -112,5 +92,33 @@ public class LoadGame : MonoBehaviour
         player1.GetComponent<ClampPosition>().enabled = true;
         player2.GetComponent<ClampPosition>().enabled = true;
         
+    }
+
+    private void RegeneratePlayers()
+    {
+        // Set health to its max value again
+        PlayerStats playerStats = player1.GetComponent<PlayerStats>();
+        if (player1.active)
+        {
+            playerStats.Regenerate();
+        } else
+        {
+            // Revive
+            player1.transform.position = new Vector3((game.offset.x + 3.5f) *  0.159f, game.offset.y + 2, 0);
+            player1.SetActive(true);
+            playerStats.Revive();
+        }
+
+        playerStats = player2.GetComponent<PlayerStats>();
+        if (players == 2 && player2.active)
+        {
+            playerStats.Regenerate();
+        } else if (players == 2)
+        {
+            // Revive
+            player2.transform.position = new Vector3((game.offset.x + 6.5f) *  0.159f, game.offset.y + 2, 0);
+            player2.SetActive(true);
+            playerStats.Revive();
+        }
     }
 }

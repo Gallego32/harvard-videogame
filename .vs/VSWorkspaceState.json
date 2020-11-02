@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Assets",
-    "\\Assets\\Scripts"
+    "\\Assets\\Scripts",
+    "\\Assets\\TextMesh Pro"
   ],
-  "SelectedNode": "\\Assets\\Scripts\\AudioManager.cs",
+  "SelectedNode": "\\Assets\\Scripts\\ClampPosition.cs",
   "PreviewInSolutionExplorer": false
 }

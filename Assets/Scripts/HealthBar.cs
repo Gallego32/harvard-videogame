@@ -11,6 +11,7 @@ public class HealthBar : MonoBehaviour
     // When we die, put a skull instead of a heart
     public GameObject skull;
     public GameObject heart;
+    private bool death = false;
 
     public void SetHealth(float health)
     {
@@ -18,6 +19,8 @@ public class HealthBar : MonoBehaviour
 
         if (slider.value == 0)
             SetSkull();
+        else if (death)
+            SetHeart();
     }
 
     public void SetMaxHealth(float health)
@@ -31,11 +34,13 @@ public class HealthBar : MonoBehaviour
     {
         heart.SetActive(false);
         skull.SetActive(true);
+        death = true;
     }
 
     private void SetHeart()
     {
         heart.SetActive(true);
         skull.SetActive(false);
+        death = false;
     }
 }

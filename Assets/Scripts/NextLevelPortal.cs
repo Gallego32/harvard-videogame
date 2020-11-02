@@ -86,14 +86,9 @@ public class NextLevelPortal : MonoBehaviour
             onPlatform = false;
             returnPlatform = true;
             if (transform.position.y < posOffset.y)
-            {
-                Debug.Log("Debajo");
                 upDown = 1;
-            } else 
-            {
-                Debug.Log("Arriba");
+            else 
                 upDown = -1;
-            }
         }
     }
 

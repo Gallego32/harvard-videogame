@@ -14,10 +14,6 @@ public class MultiplePlayers : MonoBehaviour
 
     public float smoothTime = .5f;
 
-    void Start()
-    {
-    }
-
     // Updated after Update
     void LateUpdate()
     {
