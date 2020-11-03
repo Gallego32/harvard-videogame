@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LoadGame : MonoBehaviour
 {
     // How many players
-    public static int players = 2;
+    public static int players = 1;
 
     // Level control
     public static int level = 1;

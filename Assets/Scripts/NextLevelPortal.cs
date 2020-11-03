@@ -41,7 +41,7 @@ public class NextLevelPortal : MonoBehaviour
     {
         if (!onPlatform && !returnPlatform)
         {
-            movement += Time.fixedDeltaTime * upDown;
+            movement += Time.deltaTime * upDown;
 
             // Move up and down
             tempPos = posOffset;
@@ -49,10 +49,10 @@ public class NextLevelPortal : MonoBehaviour
         } else
         {
             if (!returnPlatform)
-                tempPos.y += Time.fixedDeltaTime / 1.5f;
+                tempPos.y += Time.deltaTime / 1.5f;
             else
             {
-                tempPos.y += Time.fixedDeltaTime * upDown;
+                tempPos.y += Time.deltaTime * upDown;
                 if (upDown == -1 && transform.position.y < posOffset.y)
                     returnPlatform = false;
                 else if (upDown == 1 && transform.position.y > posOffset.y)

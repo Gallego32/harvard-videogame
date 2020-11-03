@@ -16,10 +16,16 @@ public class EnemyStats : Stats
     // Bool control for enemy death
     private bool dead;
 
+    // Enemies healthbar
+    public EnemyHealthBar healthBar;
+
     void Start()
     {
         // Enemy starts alive
         dead = false;
+
+        // Starting point of our healthbar
+        healthBar.SetMaxHealth(MaxHealth);
 
         // Get EnemyAI script
         AI = GetComponent<EnemyAI>();
@@ -44,6 +50,9 @@ public class EnemyStats : Stats
             // Modify health
             ModifyStat("health", -dmg);
             Debug.Log(gameObject.tag + " Health: " + Health);
+
+            // Update HealthBar
+            healthBar.SetHealth(Health);
 
             // Check if we died
             if (Health <= 0f && !dead)

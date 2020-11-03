@@ -18,7 +18,7 @@ public class PlayerStats : Stats
     private CoinText coinText;
 
     // Avoiding dead bugs
-    private bool dead = false;
+    private bool dead;
 
     // Avoid reviving bugs
     public ClampPosition coopClampPosition;
@@ -26,6 +26,7 @@ public class PlayerStats : Stats
     void Start()
     {
         healthBar.SetMaxHealth(MaxHealth);
+        dead = false;
 
         // Check whether we are player 1 or 2
         player = gameObject.tag == "Player1" ? 1 : 2;
@@ -151,7 +152,6 @@ public class PlayerStats : Stats
         ChangeComponentState(true);
         Regenerate();
         Start();
-        this.dead = false;
     }
 
     // Heal our player if we pick a heart
