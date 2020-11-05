@@ -354,7 +354,9 @@ MonoBehaviour:
   baseSpeed: 12
   baseRange: 0.4
   baseAttackSpeed: 2
+  baseCriticDamage: 20
   healthBar: {fileID: 0}
+  coopClampPosition: {fileID: 0}
 --- !u!1 &6099718782151322857
 GameObject:
   m_ObjectHideFlags: 0

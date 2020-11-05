@@ -9,6 +9,7 @@ public class PlayerStats : Stats
     private int level;
 
     // Reference to our healthBar;
+    [Space(10)]
     public HealthBar healthBar;
 
     // Keeps track of which player we are

@@ -5,7 +5,11 @@ using UnityEngine;
 public class EnemyStats : Stats
 {
     // Detect the player at this distance
+    [Space(10)]
     public float detectDistance;
+    
+    // Enemies healthbar
+    public EnemyHealthBar healthBar;
 
     // Items to drop when the enemy dies
     public List<GameObject> loots;
@@ -15,9 +19,6 @@ public class EnemyStats : Stats
 
     // Bool control for enemy death
     private bool dead;
-
-    // Enemies healthbar
-    public EnemyHealthBar healthBar;
 
     void Start()
     {
@@ -77,6 +78,9 @@ public class EnemyStats : Stats
         // Avoid moving
         GetComponent<Rigidbody2D>().sharedMaterial = AI.friction;
         GetComponent<CircleCollider2D>().sharedMaterial = AI.friction;
+
+        // Disable collider while dying
+        GetComponent<BoxCollider2D>().enabled = false;
 
         // Avoid moving and attacking when dies
         AI.XMovement = 0;

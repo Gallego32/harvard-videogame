@@ -609,6 +609,7 @@ MonoBehaviour:
   baseSpeed: 5.5
   baseRange: 0.3
   baseAttackSpeed: 1.5
+  baseCriticDamage: 15
   detectDistance: 1.9
   loots:
   - {fileID: 8406018951588883941, guid: 7637082514cee1b4d97e1ece5c0f3e7e, type: 3}

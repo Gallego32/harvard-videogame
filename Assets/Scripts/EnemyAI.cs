@@ -272,15 +272,20 @@ public class EnemyAI : MonoBehaviour
         // The best way I have found is creating a list with the non repeated objects.
         List<GameObject> hitList = RemoveDuplicated(hit);
 
+        // Damage Logic for critic attack
+        float damage = stats.Attack;
+        if (Random.value > 0.5)
+            damage += Random.Range(0, stats.CriticDamage);
+
         // Call hit's enemy function
         foreach(GameObject enemy in hitList)
         {
             if (enemy != gameObject) 
             {
                 if (enemy.layer == 9)
-                    enemy.GetComponent<EnemyStats>().Hit(stats.Attack);
+                    enemy.GetComponent<EnemyStats>().Hit(damage);
                 else 
-                    enemy.GetComponent<PlayerStats>().Hit(stats.Attack);
+                    enemy.GetComponent<PlayerStats>().Hit(damage);
             }
         }
     }

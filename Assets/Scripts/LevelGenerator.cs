@@ -18,38 +18,16 @@ public class LevelGenerator : MonoBehaviour
     // We'll use this array for removing tiles when we reset or change level
     TileBase[] nullArray;
 
-    //      All tiles used in level generation
-    public int levelStyle;
-    public List<TileBase> topperTiles;
-    public List<TileBase> fillTiles;
-
-    public List<TileBase> fillAlternative;
-    public List<TileBase> backgroundToppers;
-
-    public List<TileBase> leftCorner;
-    public List<TileBase> rightCorner;
-
-    public List<TileBase> leftSide;
-    public List<TileBase> rightSide;
-    public List<TileBase> downSide;
-
-    // Enemies
-    public List<GameObject> enemies;
-
-    // Props spawn objects
-    private List<GameObject>[] props;
-    public List<GameObject> basicProps;
-    public List<GameObject> darkProps;
-    public List<GameObject> purpleProps;
+    // One of out level styles will be selected from tileSet Array
+    private int levelStyle;
 
     public GameObject nextLevelPortal;
-
-    // Items
-    public List<GameObject> items;
 
     private Tilemap baseMap, foreground, background;
 
     private bool[,] mapArray;
+
+    public TileSet[] tileSet;
 
     // Start is called before the first frame update
     void Start()
@@ -77,13 +55,8 @@ public class LevelGenerator : MonoBehaviour
         mapArray = new bool[size.x, size.y];
         initialArray(mapArray, size);
 
-        // Set props variables
-        props = new List<GameObject>[fillTiles.Count];
-        props[0] = basicProps;
-        props[1] = darkProps;
-        props[2] = purpleProps;
-
-        levelStyle = Random.Range(0, 3);
+        // Initialize our levelStyle variable depending on how much elements there are in tileSet array
+        levelStyle = Random.Range(0, tileSet.Length);
 
         int k = 0;
         for (int i = 0; i < size.x; i++)
@@ -103,12 +76,13 @@ public class LevelGenerator : MonoBehaviour
                 {
                     // Generate ENEMIES
                     if (Random.value > 0.96 && i > 25 && spawnEnemies)
-                       generateObject(enemies[Random.Range(0, enemies.Count)], (i + offset.x) * 0.159f, offset.y + 2, GameObject.Find("EnemiesParent"));
+                       generateObject(tileSet[levelStyle].enemies[Random.Range(0, tileSet[levelStyle].enemies.Count)], (i + offset.x) * 0.159f, offset.y + 2, GameObject.Find("EnemiesParent"));
 
                     // Generate PROPS
                     if (Random.value > 0.85)
                     {
-                        GameObject prop = props[levelStyle][Random.Range(0, props[levelStyle].Count)];
+                        //GameObject prop = props[levelStyle][Random.Range(0, props[levelStyle].Count)];
+                        GameObject prop = tileSet[levelStyle].props[Random.Range(0, tileSet[levelStyle].props.Count)];
 
                         float propWidth = prop.GetComponent<Renderer>().bounds.size.x;
                         float propHeight = prop.GetComponent<Renderer>().bounds.size.y;
@@ -120,8 +94,9 @@ public class LevelGenerator : MonoBehaviour
                     // Generate ITEMS
                     if (Random.value > 0.95 && i > 25)
                     {
-                        GameObject item = items[Random.Range(0, items.Count)];
-                     
+                        //GameObject item = items[Random.Range(0, items.Count)];
+                        GameObject item = tileSet[levelStyle].items[Random.Range(0, tileSet[levelStyle].items.Count)];
+
                         float propWidth = item.GetComponent<Renderer>().bounds.size.x;
                         float propHeight = item.GetComponent<Renderer>().bounds.size.y;
 
@@ -129,17 +104,17 @@ public class LevelGenerator : MonoBehaviour
                     }
 
                     if (isLeftSide(i, j))
-                        tile = leftCorner[levelStyle];
+                        tile = tileSet[levelStyle].leftCorner;
                     else
                     {
                         if (isRightSide(i, j))
-                            tile = rightCorner[levelStyle];
+                            tile = tileSet[levelStyle].rightCorner;
                         else
                             // Setting special tiles for top tiles
-                            tile = topperTiles[levelStyle];
+                            tile = tileSet[levelStyle].topperTiles;
                     }
                     
-                    background = Random.value > 0.6 ? backgroundToppers[Random.Range(0,3) + levelStyle * 3] : null;
+                    background = Random.value > 0.6 ? tileSet[levelStyle].backgroundToppers[Random.Range(0, tileSet[levelStyle].backgroundToppers.Count)] : null;
 
                     // Setting foundTop to true to avoid checking for top when we have found it in a column
                     // Performance decision
@@ -149,21 +124,20 @@ public class LevelGenerator : MonoBehaviour
                 } else
                 {   
                     if (isLeftSide(i, j))
-                        tile = leftSide[levelStyle];
+                        tile =  tileSet[levelStyle].leftSide;
                     else
                     {
                         if (isRightSide(i, j))
-                          tile = rightSide[levelStyle];
+                          tile =  tileSet[levelStyle].rightSide;
                         else if (isDownSide(i, j))
-                            tile = downSide[levelStyle];
+                            tile =  tileSet[levelStyle].downSide;
                         else
                             // Setting normal tiles and no background tiles
-                            tile = Random.value > 0.03 ? fillTiles[levelStyle] : fillAlternative[Random.Range(0,2) + levelStyle * 2];
+                            tile = Random.value > 0.03 ?  tileSet[levelStyle].fillTiles : tileSet[levelStyle].alternativeFill[Random.Range(0, tileSet[levelStyle].alternativeFill.Count)];
                     }
                     background = null;
                 }
         
-                
                 // Setting tileArrays
                 tileArray[k] = mapArray[i, j] ? tile : null;
                 backTileArray[k] = background;
@@ -173,7 +147,6 @@ public class LevelGenerator : MonoBehaviour
 
         // End game generation
         generateObject(nextLevelPortal, (offset.x + size.x + 5) * 0.159f, offset.y * 0.159f, GameObject.Find("PropsParent"));
-
 
         // Setting tiles into the TileMap
         baseMap.SetTiles(positions, tileArray);
@@ -291,7 +264,6 @@ public class LevelGenerator : MonoBehaviour
             ClearChildren(GameObject.Find("PropsParent"));
             ClearChildren(GameObject.Find("EnemiesParent"));
             baseMap.SetTiles(positions, nullArray);
-            //baseMap.ClearAllTiles();
             Start();
         }
     }

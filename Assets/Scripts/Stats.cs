@@ -13,9 +13,12 @@ public class Stats : MonoBehaviour
     public float Speed { get; set; }
     public float Range { get; set; }
     public float AttackSpeed { get; set; }
+    public float CriticDamage { get; set; }
 
     // Base public stats
-    public float baseMaxHealth, baseAttack, baseDefense, baseSpeed, baseRange, baseAttackSpeed;
+    [Header("Stats")]
+    public float baseMaxHealth;
+    public float baseAttack, baseDefense, baseSpeed, baseRange, baseAttackSpeed, baseCriticDamage;
 
     // Manage Animator for every entity
     protected Animator animation;
@@ -30,6 +33,7 @@ public class Stats : MonoBehaviour
         Speed = baseSpeed > 0 ? baseSpeed : 12f;
         Range = baseRange > 0 ? baseRange : 0.4f;
         AttackSpeed = baseAttackSpeed > 0 ? baseAttackSpeed : 2f;
+        CriticDamage = baseCriticDamage >= 0 ? baseCriticDamage : 0;
 
         // Get Animator component
         animation = GetComponent<Animator>();
@@ -60,6 +64,9 @@ public class Stats : MonoBehaviour
                 break;
             case "attackSpeed":
                 this.AttackSpeed = Mathf.Max(0, this.AttackSpeed + value);
+                break;
+            case "criticDamage":
+                this.CriticDamage = Mathf.Max(0, this.CriticDamage + value);
                 break;
         }
     }

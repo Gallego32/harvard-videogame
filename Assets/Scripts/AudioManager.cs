@@ -29,7 +29,11 @@ public class AudioManager : MonoBehaviour
 
             audio.source.volume = audio.volume;
             audio.source.pitch = audio.pitch;
+
+            audio.source.loop = audio.loop;
         }
+
+        Play("MainTheme");
     }
 
     public void Play(string name)
