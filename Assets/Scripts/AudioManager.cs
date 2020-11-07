@@ -1,6 +1,7 @@
 ﻿using UnityEngine.Audio;
 using UnityEngine;
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 // Use FindObjectOfType<AudioManager>().Play("name");
 
@@ -43,5 +44,33 @@ public class AudioManager : MonoBehaviour
             s.source.Play();
         else
             Debug.LogWarning("Not found Sound");
+    }
+
+    public void Pause(string name)
+    {
+        Audio s = Array.Find(audios, audio => audio.name == name);
+        if (s != null)
+            if (s.source.isPlaying)
+                s.source.Pause();
+        else
+            Debug.LogWarning("Not found Sound");   
+    }
+
+    public void Resume(string name)
+    {
+        Audio s = Array.Find(audios, audio => audio.name == name);
+        if (s != null)
+            if (!s.source.isPlaying)
+                s.source.UnPause();
+        else
+            Debug.LogWarning("Not found Sound");   
+    }
+
+    public bool isPlaying(string name)
+    {
+        Audio s = Array.Find(audios, audio => audio.name == name);
+        if (s != null)
+            return s.source.isPlaying;
+        return false;
     }
 }

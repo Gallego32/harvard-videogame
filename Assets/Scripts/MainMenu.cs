@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame(int players)
     {
         LoadGame.players = players;
-        SceneManager.LoadScene("Play - copia");
+        SceneManager.LoadScene("Play");
     }
 
     public void QuitGame()

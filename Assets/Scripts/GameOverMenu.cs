@@ -7,7 +7,7 @@ public class GameOverMenu : MonoBehaviour
 {
     public void Reset()
     {
-        SceneManager.LoadScene("Play - copia");
+        SceneManager.LoadScene("Play");
     }
 
     public void QuitGame()

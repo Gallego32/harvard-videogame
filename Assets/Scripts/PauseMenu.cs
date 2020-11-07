@@ -77,6 +77,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
 
-        SceneManager.LoadScene("Play - copia");
+        SceneManager.LoadScene("Play");
     }
 }
