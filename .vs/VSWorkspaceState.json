@@ -3,7 +3,8 @@
     "",
     "\\Assets",
     "\\Assets\\Scripts",
-    "\\Assets\\TextMesh Pro"
+    "\\Assets\\Scripts\\World"
   ],
+  "SelectedNode": "\\Assets\\Scripts\\World\\LevelGenerator.cs",
   "PreviewInSolutionExplorer": false
 }
