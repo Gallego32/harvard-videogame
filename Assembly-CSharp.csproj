@@ -55,41 +55,39 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Stats.cs" />
-    <Compile Include="Assets\Scripts\SelectingCamera.cs" />
-    <Compile Include="Assets\Scripts\EnemyHealthBar.cs" />
-    <Compile Include="Assets\Scripts\Fader.cs" />
-    <Compile Include="Assets\Scripts\AttackControl.cs" />
-    <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Entities\Stats.cs" />
+    <Compile Include="Assets\Scripts\Scene\SelectingCamera.cs" />
+    <Compile Include="Assets\Scripts\UI\EnemyHealthBar.cs" />
+    <Compile Include="Assets\Scripts\UI\Fader.cs" />
+    <Compile Include="Assets\Scripts\Entities\AttackControl.cs" />
+    <Compile Include="Assets\Scripts\Scene\MainMenu.cs" />
     <Compile Include="Assets\Packs\Bandits - Pixel Art\Demo\Sensor_Bandit.cs" />
-    <Compile Include="Assets\Scripts\Heart.cs" />
-    <Compile Include="Assets\Scripts\FindAudioManager.cs" />
-    <Compile Include="Assets\Scripts\ClampPosition.cs" />
-    <Compile Include="Assets\Scripts\ItemMovement.cs" />
-    <Compile Include="Assets\Scripts\CharacterController2D.cs" />
-    <Compile Include="Assets\Scripts\ScrollingBackground.cs" />
-    <Compile Include="Assets\Scripts\NextLevelPortal.cs" />
-    <Compile Include="Assets\Scripts\TileSet.cs" />
-    <Compile Include="Assets\Scripts\EnemyAI.cs" />
-    <Compile Include="Assets\Scripts\Coin.cs" />
-    <Compile Include="Assets\Scripts\PlayerStats.cs" />
-    <Compile Include="Assets\Scripts\LevelText.cs" />
-    <Compile Include="Assets\Scripts\Audio.cs" />
-    <Compile Include="Assets\Scripts\ScrollingPlayState.cs" />
+    <Compile Include="Assets\Scripts\World\Heart.cs" />
+    <Compile Include="Assets\Scripts\UI\FindAudioManager.cs" />
+    <Compile Include="Assets\Scripts\Entities\ClampPosition.cs" />
+    <Compile Include="Assets\Scripts\World\ItemMovement.cs" />
+    <Compile Include="Assets\Scripts\Entities\CharacterController2D.cs" />
+    <Compile Include="Assets\Scripts\UI\ScrollingBackground.cs" />
+    <Compile Include="Assets\Scripts\World\NextLevelPortal.cs" />
+    <Compile Include="Assets\Scripts\World\TileSet.cs" />
+    <Compile Include="Assets\Scripts\Entities\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\World\Coin.cs" />
+    <Compile Include="Assets\Scripts\Entities\PlayerStats.cs" />
+    <Compile Include="Assets\Scripts\UI\LevelText.cs" />
+    <Compile Include="Assets\Scripts\Scene\Audio.cs" />
+    <Compile Include="Assets\Scripts\World\ScrollingPlayState.cs" />
     <Compile Include="Assets\Packs\Bandits - Pixel Art\Demo\Bandit.cs" />
-    <Compile Include="Assets\Scripts\BaseStats0.cs" />
-    <Compile Include="Assets\Scripts\PauseMenu.cs" />
-    <Compile Include="Assets\Scripts\GameOverMenu.cs" />
-    <Compile Include="Assets\Scripts\PlayerControl.cs" />
-    <Compile Include="Assets\Scripts\AudioManager.cs" />
-    <Compile Include="Assets\Scripts\DisableMusicButton.cs" />
-    <Compile Include="Assets\Scripts\EnemyStats.cs" />
-    <Compile Include="Assets\Scripts\MultiplePlayers.cs" />
-    <Compile Include="Assets\Scripts\Stats0.cs" />
-    <Compile Include="Assets\Scripts\LoadGame.cs" />
-    <Compile Include="Assets\Scripts\CoinText.cs" />
-    <Compile Include="Assets\Scripts\HealthBar.cs" />
-    <Compile Include="Assets\Scripts\LevelGenerator.cs" />
+    <Compile Include="Assets\Scripts\Scene\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\Scene\GameOverMenu.cs" />
+    <Compile Include="Assets\Scripts\Entities\PlayerControl.cs" />
+    <Compile Include="Assets\Scripts\Scene\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\Scene\DisableMusicButton.cs" />
+    <Compile Include="Assets\Scripts\Entities\EnemyStats.cs" />
+    <Compile Include="Assets\Scripts\Scene\MultiplePlayers.cs" />
+    <Compile Include="Assets\Scripts\Scene\LoadGame.cs" />
+    <Compile Include="Assets\Scripts\UI\CoinText.cs" />
+    <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\World\LevelGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -710,6 +708,9 @@
     <Reference Include="PsdPlugin">
       <HintPath>Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
@@ -730,6 +731,9 @@
     </Reference>
     <Reference Include="Unity.2D.Common.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
@@ -769,12 +773,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

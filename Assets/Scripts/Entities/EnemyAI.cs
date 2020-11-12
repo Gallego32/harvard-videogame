@@ -85,6 +85,7 @@ public class EnemyAI : MonoBehaviour
         // The enemy will jump if it collides with something in the way
         StartCoroutine(ShouldJump());
 
+        // Jump according to a collider that finds holes
         StartCoroutine(JumpOverHoles());
     }
 
@@ -194,6 +195,7 @@ public class EnemyAI : MonoBehaviour
 
                 foreach (Transform player in playersPosition)
                 {
+                    // Make it stop when we are close enough
                     if (player.position.x > transform.position.x - stats.Range * 3/2 &&
                         player.position.x < transform.position.x + stats.Range * 3/2 &&
                         player.position.y > transform.position.y - stats.Range * 3/2 &&

@@ -3,6 +3,7 @@
     "",
     "\\Assets",
     "\\Assets\\Scripts",
+    "\\Assets\\Scripts\\Entities",
     "\\Assets\\Scripts\\World"
   ],
   "SelectedNode": "\\Assets\\Scripts\\World\\LevelGenerator.cs",
