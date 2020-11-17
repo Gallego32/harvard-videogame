@@ -16,6 +16,7 @@ public class FindAudioManager : MonoBehaviour
 
     private void PlaySound()
     {
-        FindObjectOfType<AudioManager>().Play(sound);
+        //FindObjectOfType<AudioManager>().Play(sound);
+        FindObjectOfType<AudioManager>().GetComponent<AudioManager>().Play(sound);
     }
 }

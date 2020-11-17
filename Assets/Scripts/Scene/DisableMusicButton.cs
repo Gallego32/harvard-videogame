@@ -11,23 +11,23 @@ public class DisableMusicButton : MonoBehaviour
     // Manage button and its image
     private Button button;
     private Image image;
-    public string sound;
 
     private bool musicPlaying;
 
     public Sprite pause;
     public Sprite resume;
 
-    private AudioManager audioManager;
+    private MainMusic mainMusic;
 
     // Start is called before the first frame update
     void Start()
     {
         button = GetComponent<Button>();
-        audioManager = FindObjectOfType<AudioManager>();
+        mainMusic = FindObjectOfType<MainMusic>();
         image = GetComponent<Image>();
 
-        musicPlaying = audioManager.isPlaying(sound);
+        musicPlaying = mainMusic.isPlaying(mainMusic.nowPlaying);
+        //Debug.Log(musicPlaying);
 
         image.sprite = musicPlaying ? pause : resume;
     }
@@ -36,8 +36,8 @@ public class DisableMusicButton : MonoBehaviour
     {
         if (musicPlaying)
         {
-            // If the music is Playing oause it
-            audioManager.Pause(sound);
+            // If the music is Playing pause it
+            mainMusic.Pause(mainMusic.nowPlaying);
             musicPlaying = false;
 
             // Change sprite to "resume" one
@@ -45,7 +45,7 @@ public class DisableMusicButton : MonoBehaviour
         } else
         {
             // If the music isn't playing resume it
-            audioManager.Resume(sound);
+            mainMusic.Resume(mainMusic.nowPlaying);
             musicPlaying = true;
 
             // Change sprite to "pause" one

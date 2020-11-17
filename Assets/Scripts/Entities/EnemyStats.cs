@@ -43,7 +43,7 @@ public class EnemyStats : Stats
             animation.SetTrigger("Hit");
 
             // Play Hurt sound
-            FindObjectOfType<AudioManager>().Play("EnemyHurt");
+            FindObjectOfType<AudioManager>().GetComponent<AudioManager>().Play("EnemyHurt");
 
             // Defense logic
             float dmg = damage - ((Defense + Random.Range(0, 2)) * damage / 100);
@@ -73,7 +73,8 @@ public class EnemyStats : Stats
         animation.SetBool("Dead", true);
 
         // Play Hurt sound
-        FindObjectOfType<AudioManager>().Play("EnemyDead");
+        //FindObjectOfType<AudioManager>().Play("EnemyDead");
+        FindObjectOfType<AudioManager>().GetComponent<AudioManager>().Play("EnemyDead");
 
         // Avoid moving
         GetComponent<Rigidbody2D>().sharedMaterial = AI.friction;

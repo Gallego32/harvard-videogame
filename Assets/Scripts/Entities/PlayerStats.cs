@@ -77,7 +77,8 @@ public class PlayerStats : Stats
                 StartCoroutine(Die());
             } else
                 // Play Hurt sound
-                FindObjectOfType<AudioManager>().Play("Hurt");
+                //FindObjectOfType<AudioManager>().Play("Hurt");
+                FindObjectOfType<AudioManager>().GetComponent<AudioManager>().Play("Hurt");
         }
     }
 
@@ -87,7 +88,7 @@ public class PlayerStats : Stats
         animation.SetBool("Dead", true);
 
         // Play Dead sound
-        FindObjectOfType<AudioManager>().Play("Dead");
+        FindObjectOfType<AudioManager>().GetComponent<AudioManager>().Play("Dead");
 
         PlayerControl PC = GetComponent<PlayerControl>();
 

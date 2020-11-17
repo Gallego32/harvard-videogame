@@ -29,6 +29,9 @@ public class LevelGenerator : MonoBehaviour
 
     public TileSet[] tileSet;
 
+    //public GameObject structure;
+    //public GameObject structure2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +60,9 @@ public class LevelGenerator : MonoBehaviour
 
         // Initialize our levelStyle variable depending on how much elements there are in tileSet array
         levelStyle = Random.Range(0, tileSet.Length);
+
+        //generateObject(structure, offset.x * 0.159f, offset.y * 0.159f, GameObject.Find("PropsParent"));
+        //generateObject(structure2, offset.x * 0.159f, offset.y * 0.159f, GameObject.Find("Grid"));
 
         int k = 0;
         for (int i = 0; i < size.x; i++)
@@ -90,6 +96,9 @@ public class LevelGenerator : MonoBehaviour
                         if (hasEmptySpace(i, j, (int)Mathf.Ceil(propWidth / 0.159f)))
                             generateObject(prop, (i + offset.x) * 0.159f + propWidth / 2, (offset.y - j + 1) * 0.159f + propHeight / 2, GameObject.Find("PropsParent"));
                     }
+
+                    // Prueba de estructuras
+                    //generateObject(structure, i + offset.x * 0.159f, (offset.y - j + 1) * 0.159f, GameObject.Find("PropsParent"));
 
                     // Generate ITEMS
                     if (Random.value > 0.95 && i > 25)
@@ -207,7 +216,6 @@ public class LevelGenerator : MonoBehaviour
         if (!mapArray[x, y])
             return false;
 
-        bool isTop = true;
         int j = y - 1;
         for (; j > 0 && !mapArray[x, j]; j--);
 

@@ -4,8 +4,9 @@
     "\\Assets",
     "\\Assets\\Scripts",
     "\\Assets\\Scripts\\Entities",
+    "\\Assets\\Scripts\\Scene",
+    "\\Assets\\Scripts\\UI",
     "\\Assets\\Scripts\\World"
   ],
-  "SelectedNode": "\\Assets\\Scripts\\World\\LevelGenerator.cs",
   "PreviewInSolutionExplorer": false
 }

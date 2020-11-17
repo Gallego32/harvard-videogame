@@ -4,17 +4,18 @@ using System;
 using System.Runtime.InteropServices.WindowsRuntime;
 
 // Use FindObjectOfType<AudioManager>().Play("name");
+// Better Use FindObjectOfType<AudioManager>().GetComponent<AudioManager>().Play("name");
 
 public class AudioManager : MonoBehaviour
 {
     public Audio[] audios;
 
-    public static AudioManager instance;
+    public static GameObject instance;
 
     void Awake()
     {
         if (instance == null)
-            instance = this;
+            instance = gameObject;
         else
         {
             Destroy(gameObject);
@@ -33,8 +34,6 @@ public class AudioManager : MonoBehaviour
 
             audio.source.loop = audio.loop;
         }
-
-        Play("MainTheme");
     }
 
     public void Play(string name)
@@ -43,27 +42,34 @@ public class AudioManager : MonoBehaviour
         if (s != null)
             s.source.Play();
         else
-            Debug.LogWarning("Not found Sound");
+            //Debug.LogWarning("Not found Sound");
+            throw new System.ArgumentException("Not found Sound");
     }
 
     public void Pause(string name)
     {
         Audio s = Array.Find(audios, audio => audio.name == name);
         if (s != null)
+        {
             if (s.source.isPlaying)
                 s.source.Pause();
+        }
         else
-            Debug.LogWarning("Not found Sound");   
+            //Debug.LogWarning("Not found Sound");   
+            throw new System.ArgumentException("Not found Sound");
     }
 
     public void Resume(string name)
     {
         Audio s = Array.Find(audios, audio => audio.name == name);
         if (s != null)
+        {
             if (!s.source.isPlaying)
                 s.source.UnPause();
+        }
         else
-            Debug.LogWarning("Not found Sound");   
+          //  Debug.LogWarning("Not found Sound");  
+          throw new System.ArgumentException("Not found Sound");
     }
 
     public bool isPlaying(string name)

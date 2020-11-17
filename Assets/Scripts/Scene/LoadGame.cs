@@ -56,7 +56,7 @@ public class LoadGame : MonoBehaviour
         // Fade IN and OUT
         StartCoroutine(fader.FadeFor(0.2f, 5, Fader.initialSpeed));
 
-        FindObjectOfType<AudioManager>().Play("NextLevel");
+        FindObjectOfType<AudioManager>().GetComponent<AudioManager>().Play("NextLevel");
 
         // Spawn players in our spawn point (At the beggining of the level)
         StartCoroutine(Spawn());

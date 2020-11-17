@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2556024573510735889}
   - component: {fileID: 2556024573510735890}
+  - component: {fileID: 1897243833}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -116,9 +117,54 @@ MonoBehaviour:
     pitch: 1.55
     source: {fileID: 0}
     loop: 0
-  - name: MainTheme
-    clip: {fileID: 8300000, guid: 22867229a1e3ed34a9fc32db35d2483e, type: 3}
-    volume: 0.492
+--- !u!114 &1897243833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556024573510735888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6681d31ad08e2384da62e7e9f8eca288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios:
+  - name: MainTheme1
+    clip: {fileID: 8300000, guid: 5002c9c4a5d1cc2428314cc2a32c5a3a, type: 3}
+    volume: 0.4
     pitch: 1
     source: {fileID: 0}
-    loop: 1
+    loop: 0
+  - name: MainTheme2
+    clip: {fileID: 8300000, guid: 2d755698eb4ab49468ef22683275af19, type: 3}
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: MainTheme4
+    clip: {fileID: 8300000, guid: 4f6e002f8c93bad4a8e348395c8f492f, type: 3}
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: MainTheme5
+    clip: {fileID: 8300000, guid: 22867229a1e3ed34a9fc32db35d2483e, type: 3}
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: MainTheme6
+    clip: {fileID: 8300000, guid: 77c06c34a96f8e447960c61608a6b986, type: 3}
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: MainTheme7
+    clip: {fileID: 8300000, guid: daf6b770b827cb8448ec21a621fb2a54, type: 3}
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  nowPlaying: 
+  isPaused: 0

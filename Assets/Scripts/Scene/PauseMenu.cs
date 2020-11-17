@@ -51,13 +51,15 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        FindObjectOfType<AudioManager>().Play("PauseInverted");
+        FindObjectOfType<AudioManager>().GetComponent<AudioManager>().Play("PauseInverted");
+        //FindObjectOfType<AudioManager>().Play("PauseInverted");
         StartCoroutine(Faint());
     }
 
     void Pause()
     {
-        FindObjectOfType<AudioManager>().Play("Pause");
+        FindObjectOfType<AudioManager>().GetComponent<AudioManager>().Play("Pause");
+        //FindObjectOfType<AudioManager>().Play("Pause");
         Paused = true;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
