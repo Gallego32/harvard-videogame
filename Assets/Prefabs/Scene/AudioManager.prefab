@@ -117,6 +117,7 @@ MonoBehaviour:
     pitch: 1.55
     source: {fileID: 0}
     loop: 0
+  audioMixerGroup: {fileID: -7137894653488605317, guid: 6af78e4cf9399444e9d35a7d5f26d247, type: 2}
 --- !u!114 &1897243833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,5 +167,6 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  audioMixerGroup: {fileID: 1742674970717489262, guid: 6af78e4cf9399444e9d35a7d5f26d247, type: 2}
   nowPlaying: 
   isPaused: 0

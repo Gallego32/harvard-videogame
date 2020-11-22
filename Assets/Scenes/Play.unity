@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9a8e023b5e66b0d478386a07d1627765, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 41d7e42cd86fe69479946f03e127339b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2473,6 +2473,8 @@ MonoBehaviour:
     items:
     - {fileID: 2726245308713289846, guid: 58ce794a5b0aade448390ccd682b7925, type: 3}
     - {fileID: 4324174504418366173, guid: 3768f22cbf278a4428e3650dbd3b7abc, type: 3}
+    - {fileID: 879394514217259591, guid: 27f73e98e501840449de40704d40e600, type: 3}
+    - {fileID: 8428246354081946848, guid: 5ac6098683d0e35429184de229df4760, type: 3}
     enemies:
     - {fileID: 2338844544018988606, guid: af970090bd501e845a4d8d417a097141, type: 3}
     - {fileID: 7907783177288663472, guid: db4274f6ed2382244935be40ed2e677f, type: 3}
@@ -2508,6 +2510,9 @@ MonoBehaviour:
     items:
     - {fileID: 2726245308713289846, guid: 58ce794a5b0aade448390ccd682b7925, type: 3}
     - {fileID: 4324174504418366173, guid: 3768f22cbf278a4428e3650dbd3b7abc, type: 3}
+    - {fileID: 879394514217259591, guid: 27f73e98e501840449de40704d40e600, type: 3}
+    - {fileID: 8428246354081946848, guid: 5ac6098683d0e35429184de229df4760, type: 3}
+    - {fileID: 7328005090258049228, guid: e3861aaec2f87aa44a6038570abb846e, type: 3}
     enemies:
     - {fileID: 2338844544018988606, guid: af970090bd501e845a4d8d417a097141, type: 3}
     - {fileID: 7907783177288663472, guid: db4274f6ed2382244935be40ed2e677f, type: 3}
@@ -2545,6 +2550,9 @@ MonoBehaviour:
     - {fileID: 2726245308713289846, guid: 58ce794a5b0aade448390ccd682b7925, type: 3}
     - {fileID: 4324174504418366173, guid: 3768f22cbf278a4428e3650dbd3b7abc, type: 3}
     - {fileID: 7328005090258049228, guid: e3861aaec2f87aa44a6038570abb846e, type: 3}
+    - {fileID: 879394514217259591, guid: 27f73e98e501840449de40704d40e600, type: 3}
+    - {fileID: 8428246354081946848, guid: 5ac6098683d0e35429184de229df4760, type: 3}
+    - {fileID: 7724949197654963533, guid: e8b38fed97de36e4da06775a538981b5, type: 3}
     enemies:
     - {fileID: 2338844544018988606, guid: af970090bd501e845a4d8d417a097141, type: 3}
     - {fileID: 7907783177288663472, guid: db4274f6ed2382244935be40ed2e677f, type: 3}
@@ -3377,7 +3385,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9a8e023b5e66b0d478386a07d1627765, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 41d7e42cd86fe69479946f03e127339b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5447,7 +5455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 701980107954388505}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.04, y: -0.04699999, z: 10}
+  m_LocalPosition: {x: -6.11, y: -0.04699999, z: 10}
   m_LocalScale: {x: 1.5912182, y: 1.5912182, z: 1.5912182}
   m_Children:
   - {fileID: 701980108072856688}

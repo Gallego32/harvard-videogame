@@ -637,9 +637,11 @@ MonoBehaviour:
   baseAttack: 15
   baseDefense: 20
   baseSpeed: 9
-  baseRange: 0.4
+  baseRange: 0.35
   baseAttackSpeed: 2
+  baseCriticDamage: 0
   detectDistance: 2
+  healthBar: {fileID: 8208132312245712406}
   loots:
   - {fileID: 8406018951588883941, guid: 7637082514cee1b4d97e1ece5c0f3e7e, type: 3}
   - {fileID: 4324174504418366173, guid: 3768f22cbf278a4428e3650dbd3b7abc, type: 3}
@@ -651,7 +653,7 @@ MonoBehaviour:
   - {fileID: 7328005090258049228, guid: e3861aaec2f87aa44a6038570abb846e, type: 3}
   - {fileID: 2937502682205200053, guid: 60575ee7ecb237541bbf1d73730fdcd4, type: 3}
   - {fileID: 7328005090258049228, guid: e3861aaec2f87aa44a6038570abb846e, type: 3}
-  healthBar: {fileID: 8208132312245712406}
+  - {fileID: 7724949197654963533, guid: e8b38fed97de36e4da06775a538981b5, type: 3}
 --- !u!114 &6727803285023079500
 MonoBehaviour:
   m_ObjectHideFlags: 0

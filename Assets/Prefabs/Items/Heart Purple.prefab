@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amplitude: 0.075
   speed: 1.5
-  despawn: 0
+  despawn: 1
   despawnTime: 20
 --- !u!114 &2115276903811470474
 MonoBehaviour:

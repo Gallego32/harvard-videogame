@@ -121,8 +121,9 @@ public class PlayerStats : Stats
                 gameObject.SetActive(false);
 
                 healthBar.SetHealth(0);
-            }   
-            yield return new WaitForSeconds(1);
+                yield return Time.deltaTime;
+
+            } else yield return new WaitForSeconds(1);
         }
     }
 

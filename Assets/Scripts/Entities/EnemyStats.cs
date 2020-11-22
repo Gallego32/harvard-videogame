@@ -91,7 +91,8 @@ public class EnemyStats : Stats
         if (Random.value > 0.25)
             GenerateObject(transform.position.x,
                            transform.position.y + GetComponent<Renderer>().bounds.size.y / 2,
-                           Random.Range(1, 3));
+                           Random.Range(1, 3),
+                           GameObject.Find("PropsParent"));
 
         // Wait some time before removing entity
         yield return new WaitForSeconds(1f);
@@ -111,7 +112,7 @@ public class EnemyStats : Stats
         }
     }
 
-    private void GenerateObject(float x, float y, int amount)
+    private void GenerateObject(float x, float y, int amount, GameObject parent)
     {
         float actualX = x;
 
@@ -120,7 +121,8 @@ public class EnemyStats : Stats
             GameObject item = loots[Random.Range(0, loots.Count)];
             item.GetComponent<ItemMovement>().despawn = true;
 
-            Instantiate(item, new Vector3(actualX, y, 0), Quaternion.identity);
+            var myPrefab = Instantiate(item, new Vector3(actualX, y, 0), Quaternion.identity);
+            myPrefab.transform.parent = parent.transform;
 
             // This way all the items won't be placed in the same position
             if (i % 2 == 0)

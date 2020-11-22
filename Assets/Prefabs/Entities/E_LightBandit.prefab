@@ -622,6 +622,7 @@ MonoBehaviour:
   baseAttackSpeed: 1.8
   baseCriticDamage: 10
   detectDistance: 2
+  healthBar: {fileID: 1115578419}
   loots:
   - {fileID: 8406018951588883941, guid: 7637082514cee1b4d97e1ece5c0f3e7e, type: 3}
   - {fileID: 4324174504418366173, guid: 3768f22cbf278a4428e3650dbd3b7abc, type: 3}
@@ -629,7 +630,8 @@ MonoBehaviour:
   - {fileID: 2115276903811470465, guid: a31883d5432962c45a2f54ed951cfc96, type: 3}
   - {fileID: 7328005090258049228, guid: e3861aaec2f87aa44a6038570abb846e, type: 3}
   - {fileID: 2937502682205200053, guid: 60575ee7ecb237541bbf1d73730fdcd4, type: 3}
-  healthBar: {fileID: 1115578419}
+  - {fileID: 879394514217259591, guid: 27f73e98e501840449de40704d40e600, type: 3}
+  - {fileID: 8428246354081946848, guid: 5ac6098683d0e35429184de229df4760, type: 3}
 --- !u!1 &2338844544484396914
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour
     public Audio[] audios;
 
     public static GameObject instance;
+    
+    public AudioMixerGroup audioMixerGroup;
 
     void Awake()
     {
@@ -33,6 +35,8 @@ public class AudioManager : MonoBehaviour
             audio.source.pitch = audio.pitch;
 
             audio.source.loop = audio.loop;
+
+            audio.source.outputAudioMixerGroup = audioMixerGroup;
         }
     }
 
